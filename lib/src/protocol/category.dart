@@ -15,14 +15,14 @@ abstract class Category implements _i1.SerializableModel {
     this.id,
     required this.title,
     required this.color,
-    required this.icon,
+    this.icon,
   });
 
   factory Category({
     int? id,
     required String title,
     required String color,
-    required String icon,
+    String? icon,
   }) = _CategoryImpl;
 
   factory Category.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -30,7 +30,7 @@ abstract class Category implements _i1.SerializableModel {
       id: jsonSerialization['id'] as int?,
       title: jsonSerialization['title'] as String,
       color: jsonSerialization['color'] as String,
-      icon: jsonSerialization['icon'] as String,
+      icon: jsonSerialization['icon'] as String?,
     );
   }
 
@@ -43,7 +43,7 @@ abstract class Category implements _i1.SerializableModel {
 
   String color;
 
-  String icon;
+  String? icon;
 
   Category copyWith({
     int? id,
@@ -57,7 +57,7 @@ abstract class Category implements _i1.SerializableModel {
       if (id != null) 'id': id,
       'title': title,
       'color': color,
-      'icon': icon,
+      if (icon != null) 'icon': icon,
     };
   }
 
@@ -74,7 +74,7 @@ class _CategoryImpl extends Category {
     int? id,
     required String title,
     required String color,
-    required String icon,
+    String? icon,
   }) : super._(
           id: id,
           title: title,
@@ -87,13 +87,13 @@ class _CategoryImpl extends Category {
     Object? id = _Undefined,
     String? title,
     String? color,
-    String? icon,
+    Object? icon = _Undefined,
   }) {
     return Category(
       id: id is int? ? id : this.id,
       title: title ?? this.title,
       color: color ?? this.color,
-      icon: icon ?? this.icon,
+      icon: icon is String? ? icon : this.icon,
     );
   }
 }
