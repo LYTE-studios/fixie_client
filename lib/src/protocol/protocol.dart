@@ -109,9 +109,9 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i11.UserProfile?>()) {
       return (data != null ? _i11.UserProfile.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<List<_i12.Days>?>()) {
+    if (t == _i1.getType<List<int>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i12.Days>(e)).toList()
+          ? (data as List).map((e) => deserialize<int>(e)).toList()
           : null) as dynamic;
     }
     if (t == _i1.getType<List<_i12.JournalLog>?>()) {
