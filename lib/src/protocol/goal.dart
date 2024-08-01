@@ -31,6 +31,7 @@ abstract class Goal implements _i1.SerializableModel {
     this.remindHalf,
     this.remindTimezone,
     this.journal,
+    this.currentStreak,
   });
 
   factory Goal({
@@ -52,6 +53,7 @@ abstract class Goal implements _i1.SerializableModel {
     bool? remindHalf,
     String? remindTimezone,
     List<_i2.JournalLog>? journal,
+    int? currentStreak,
   }) = _GoalImpl;
 
   factory Goal.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -86,6 +88,7 @@ abstract class Goal implements _i1.SerializableModel {
       journal: (jsonSerialization['journal'] as List?)
           ?.map((e) => _i2.JournalLog.fromJson((e as Map<String, dynamic>)))
           .toList(),
+      currentStreak: jsonSerialization['currentStreak'] as int?,
     );
   }
 
@@ -128,6 +131,8 @@ abstract class Goal implements _i1.SerializableModel {
 
   List<_i2.JournalLog>? journal;
 
+  int? currentStreak;
+
   Goal copyWith({
     int? id,
     String? title,
@@ -147,6 +152,7 @@ abstract class Goal implements _i1.SerializableModel {
     bool? remindHalf,
     String? remindTimezone,
     List<_i2.JournalLog>? journal,
+    int? currentStreak,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -170,6 +176,7 @@ abstract class Goal implements _i1.SerializableModel {
       if (remindTimezone != null) 'remindTimezone': remindTimezone,
       if (journal != null)
         'journal': journal?.toJson(valueToJson: (v) => v.toJson()),
+      if (currentStreak != null) 'currentStreak': currentStreak,
     };
   }
 
@@ -201,6 +208,7 @@ class _GoalImpl extends Goal {
     bool? remindHalf,
     String? remindTimezone,
     List<_i2.JournalLog>? journal,
+    int? currentStreak,
   }) : super._(
           id: id,
           title: title,
@@ -220,6 +228,7 @@ class _GoalImpl extends Goal {
           remindHalf: remindHalf,
           remindTimezone: remindTimezone,
           journal: journal,
+          currentStreak: currentStreak,
         );
 
   @override
@@ -242,6 +251,7 @@ class _GoalImpl extends Goal {
     Object? remindHalf = _Undefined,
     Object? remindTimezone = _Undefined,
     Object? journal = _Undefined,
+    Object? currentStreak = _Undefined,
   }) {
     return Goal(
       id: id is int? ? id : this.id,
@@ -264,6 +274,7 @@ class _GoalImpl extends Goal {
           remindTimezone is String? ? remindTimezone : this.remindTimezone,
       journal:
           journal is List<_i2.JournalLog>? ? journal : this.journal?.clone(),
+      currentStreak: currentStreak is int? ? currentStreak : this.currentStreak,
     );
   }
 }
