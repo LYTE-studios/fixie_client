@@ -85,6 +85,25 @@ class EndpointJournal extends _i1.EndpointRef {
   @override
   String get name => 'journal';
 
+  _i2.Future<Map<String, String?>> getImageUploadDescription({
+    required _i4.JournalLog log,
+    required String fileName,
+  }) =>
+      caller.callServerEndpoint<Map<String, String?>>(
+        'journal',
+        'getImageUploadDescription',
+        {
+          'log': log,
+          'fileName': fileName,
+        },
+      );
+
+  _i2.Future<bool> verifyUpload(String path) => caller.callServerEndpoint<bool>(
+        'journal',
+        'verifyUpload',
+        {'path': path},
+      );
+
   _i2.Future<int> addLog(
     int goalId,
     _i4.JournalLog log,

@@ -32,6 +32,8 @@ abstract class Goal implements _i1.SerializableModel {
     this.remindTimezone,
     this.journal,
     this.currentStreak,
+    this.highestStreak,
+    this.unit,
   });
 
   factory Goal({
@@ -54,6 +56,8 @@ abstract class Goal implements _i1.SerializableModel {
     String? remindTimezone,
     List<_i2.JournalLog>? journal,
     int? currentStreak,
+    int? highestStreak,
+    String? unit,
   }) = _GoalImpl;
 
   factory Goal.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -89,6 +93,8 @@ abstract class Goal implements _i1.SerializableModel {
           ?.map((e) => _i2.JournalLog.fromJson((e as Map<String, dynamic>)))
           .toList(),
       currentStreak: jsonSerialization['currentStreak'] as int?,
+      highestStreak: jsonSerialization['highestStreak'] as int?,
+      unit: jsonSerialization['unit'] as String?,
     );
   }
 
@@ -133,6 +139,10 @@ abstract class Goal implements _i1.SerializableModel {
 
   int? currentStreak;
 
+  int? highestStreak;
+
+  String? unit;
+
   Goal copyWith({
     int? id,
     String? title,
@@ -153,6 +163,8 @@ abstract class Goal implements _i1.SerializableModel {
     String? remindTimezone,
     List<_i2.JournalLog>? journal,
     int? currentStreak,
+    int? highestStreak,
+    String? unit,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -177,6 +189,8 @@ abstract class Goal implements _i1.SerializableModel {
       if (journal != null)
         'journal': journal?.toJson(valueToJson: (v) => v.toJson()),
       if (currentStreak != null) 'currentStreak': currentStreak,
+      if (highestStreak != null) 'highestStreak': highestStreak,
+      if (unit != null) 'unit': unit,
     };
   }
 
@@ -209,6 +223,8 @@ class _GoalImpl extends Goal {
     String? remindTimezone,
     List<_i2.JournalLog>? journal,
     int? currentStreak,
+    int? highestStreak,
+    String? unit,
   }) : super._(
           id: id,
           title: title,
@@ -229,6 +245,8 @@ class _GoalImpl extends Goal {
           remindTimezone: remindTimezone,
           journal: journal,
           currentStreak: currentStreak,
+          highestStreak: highestStreak,
+          unit: unit,
         );
 
   @override
@@ -252,6 +270,8 @@ class _GoalImpl extends Goal {
     Object? remindTimezone = _Undefined,
     Object? journal = _Undefined,
     Object? currentStreak = _Undefined,
+    Object? highestStreak = _Undefined,
+    Object? unit = _Undefined,
   }) {
     return Goal(
       id: id is int? ? id : this.id,
@@ -275,6 +295,8 @@ class _GoalImpl extends Goal {
       journal:
           journal is List<_i2.JournalLog>? ? journal : this.journal?.clone(),
       currentStreak: currentStreak is int? ? currentStreak : this.currentStreak,
+      highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
+      unit: unit is String? ? unit : this.unit,
     );
   }
 }

@@ -17,8 +17,10 @@ abstract class JournalLog implements _i1.SerializableModel {
     required this.goalId,
     this.goal,
     required this.text,
-    required this.date,
     this.picture,
+    this.loggedValue,
+    required this.createdAt,
+    required this.modifiedAt,
   });
 
   factory JournalLog({
@@ -26,8 +28,10 @@ abstract class JournalLog implements _i1.SerializableModel {
     required int goalId,
     _i2.Goal? goal,
     required String text,
-    required DateTime date,
     String? picture,
+    double? loggedValue,
+    required DateTime createdAt,
+    required DateTime modifiedAt,
   }) = _JournalLogImpl;
 
   factory JournalLog.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -39,8 +43,12 @@ abstract class JournalLog implements _i1.SerializableModel {
           : _i2.Goal.fromJson(
               (jsonSerialization['goal'] as Map<String, dynamic>)),
       text: jsonSerialization['text'] as String,
-      date: _i1.DateTimeJsonExtension.fromJson(jsonSerialization['date']),
       picture: jsonSerialization['picture'] as String?,
+      loggedValue: (jsonSerialization['loggedValue'] as num?)?.toDouble(),
+      createdAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
+      modifiedAt:
+          _i1.DateTimeJsonExtension.fromJson(jsonSerialization['modifiedAt']),
     );
   }
 
@@ -55,17 +63,23 @@ abstract class JournalLog implements _i1.SerializableModel {
 
   String text;
 
-  DateTime date;
-
   String? picture;
+
+  double? loggedValue;
+
+  DateTime createdAt;
+
+  DateTime modifiedAt;
 
   JournalLog copyWith({
     int? id,
     int? goalId,
     _i2.Goal? goal,
     String? text,
-    DateTime? date,
     String? picture,
+    double? loggedValue,
+    DateTime? createdAt,
+    DateTime? modifiedAt,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -74,8 +88,10 @@ abstract class JournalLog implements _i1.SerializableModel {
       'goalId': goalId,
       if (goal != null) 'goal': goal?.toJson(),
       'text': text,
-      'date': date.toJson(),
       if (picture != null) 'picture': picture,
+      if (loggedValue != null) 'loggedValue': loggedValue,
+      'createdAt': createdAt.toJson(),
+      'modifiedAt': modifiedAt.toJson(),
     };
   }
 
@@ -93,15 +109,19 @@ class _JournalLogImpl extends JournalLog {
     required int goalId,
     _i2.Goal? goal,
     required String text,
-    required DateTime date,
     String? picture,
+    double? loggedValue,
+    required DateTime createdAt,
+    required DateTime modifiedAt,
   }) : super._(
           id: id,
           goalId: goalId,
           goal: goal,
           text: text,
-          date: date,
           picture: picture,
+          loggedValue: loggedValue,
+          createdAt: createdAt,
+          modifiedAt: modifiedAt,
         );
 
   @override
@@ -110,16 +130,20 @@ class _JournalLogImpl extends JournalLog {
     int? goalId,
     Object? goal = _Undefined,
     String? text,
-    DateTime? date,
     Object? picture = _Undefined,
+    Object? loggedValue = _Undefined,
+    DateTime? createdAt,
+    DateTime? modifiedAt,
   }) {
     return JournalLog(
       id: id is int? ? id : this.id,
       goalId: goalId ?? this.goalId,
       goal: goal is _i2.Goal? ? goal : this.goal?.copyWith(),
       text: text ?? this.text,
-      date: date ?? this.date,
       picture: picture is String? ? picture : this.picture,
+      loggedValue: loggedValue is double? ? loggedValue : this.loggedValue,
+      createdAt: createdAt ?? this.createdAt,
+      modifiedAt: modifiedAt ?? this.modifiedAt,
     );
   }
 }

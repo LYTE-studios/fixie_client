@@ -16,6 +16,7 @@ abstract class UserProfile implements _i1.SerializableModel {
     required this.email,
     this.birthday,
     required this.daysSinceCreation,
+    this.highestStreak,
   });
 
   factory UserProfile({
@@ -23,6 +24,7 @@ abstract class UserProfile implements _i1.SerializableModel {
     required String email,
     DateTime? birthday,
     required int daysSinceCreation,
+    int? highestStreak,
   }) = _UserProfileImpl;
 
   factory UserProfile.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -33,6 +35,7 @@ abstract class UserProfile implements _i1.SerializableModel {
           ? null
           : _i1.DateTimeJsonExtension.fromJson(jsonSerialization['birthday']),
       daysSinceCreation: jsonSerialization['daysSinceCreation'] as int,
+      highestStreak: jsonSerialization['highestStreak'] as int?,
     );
   }
 
@@ -44,11 +47,14 @@ abstract class UserProfile implements _i1.SerializableModel {
 
   int daysSinceCreation;
 
+  int? highestStreak;
+
   UserProfile copyWith({
     String? name,
     String? email,
     DateTime? birthday,
     int? daysSinceCreation,
+    int? highestStreak,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -57,6 +63,7 @@ abstract class UserProfile implements _i1.SerializableModel {
       'email': email,
       if (birthday != null) 'birthday': birthday?.toJson(),
       'daysSinceCreation': daysSinceCreation,
+      if (highestStreak != null) 'highestStreak': highestStreak,
     };
   }
 
@@ -74,11 +81,13 @@ class _UserProfileImpl extends UserProfile {
     required String email,
     DateTime? birthday,
     required int daysSinceCreation,
+    int? highestStreak,
   }) : super._(
           name: name,
           email: email,
           birthday: birthday,
           daysSinceCreation: daysSinceCreation,
+          highestStreak: highestStreak,
         );
 
   @override
@@ -87,12 +96,14 @@ class _UserProfileImpl extends UserProfile {
     String? email,
     Object? birthday = _Undefined,
     int? daysSinceCreation,
+    Object? highestStreak = _Undefined,
   }) {
     return UserProfile(
       name: name ?? this.name,
       email: email ?? this.email,
       birthday: birthday is DateTime? ? birthday : this.birthday,
       daysSinceCreation: daysSinceCreation ?? this.daysSinceCreation,
+      highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
     );
   }
 }
