@@ -9,18 +9,14 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import 'protocol.dart' as _i2;
+import '../protocol.dart' as _i2;
 
-abstract class Goal implements _i1.SerializableModel {
-  Goal._({
-    this.id,
+abstract class CreateGoalDto implements _i1.SerializableModel {
+  CreateGoalDto._({
     required this.title,
-    required this.userId,
-    this.user,
     this.picture,
     required this.target,
     this.unit,
-    required this.categoryId,
     this.category,
     this.days,
     this.end,
@@ -29,22 +25,13 @@ abstract class Goal implements _i1.SerializableModel {
     this.remindMinutes,
     this.remindHalf,
     this.remindTimezone,
-    this.journal,
-    this.currentStreak,
-    this.highestStreak,
-    required this.active,
-    required this.archived,
   });
 
-  factory Goal({
-    int? id,
+  factory CreateGoalDto({
     required String title,
-    required int userId,
-    _i2.User? user,
     String? picture,
     required int target,
     String? unit,
-    required int categoryId,
     _i2.Category? category,
     List<_i2.RepeatableDays>? days,
     DateTime? end,
@@ -53,26 +40,14 @@ abstract class Goal implements _i1.SerializableModel {
     int? remindMinutes,
     bool? remindHalf,
     String? remindTimezone,
-    List<_i2.JournalLog>? journal,
-    int? currentStreak,
-    int? highestStreak,
-    required bool active,
-    required bool archived,
-  }) = _GoalImpl;
+  }) = _CreateGoalDtoImpl;
 
-  factory Goal.fromJson(Map<String, dynamic> jsonSerialization) {
-    return Goal(
-      id: jsonSerialization['id'] as int?,
+  factory CreateGoalDto.fromJson(Map<String, dynamic> jsonSerialization) {
+    return CreateGoalDto(
       title: jsonSerialization['title'] as String,
-      userId: jsonSerialization['userId'] as int,
-      user: jsonSerialization['user'] == null
-          ? null
-          : _i2.User.fromJson(
-              (jsonSerialization['user'] as Map<String, dynamic>)),
       picture: jsonSerialization['picture'] as String?,
       target: jsonSerialization['target'] as int,
       unit: jsonSerialization['unit'] as String?,
-      categoryId: jsonSerialization['categoryId'] as int,
       category: jsonSerialization['category'] == null
           ? null
           : _i2.Category.fromJson(
@@ -88,34 +63,16 @@ abstract class Goal implements _i1.SerializableModel {
       remindMinutes: jsonSerialization['remindMinutes'] as int?,
       remindHalf: jsonSerialization['remindHalf'] as bool?,
       remindTimezone: jsonSerialization['remindTimezone'] as String?,
-      journal: (jsonSerialization['journal'] as List?)
-          ?.map((e) => _i2.JournalLog.fromJson((e as Map<String, dynamic>)))
-          .toList(),
-      currentStreak: jsonSerialization['currentStreak'] as int?,
-      highestStreak: jsonSerialization['highestStreak'] as int?,
-      active: jsonSerialization['active'] as bool,
-      archived: jsonSerialization['archived'] as bool,
     );
   }
 
-  /// The database id, set if the object has been inserted into the
-  /// database or if it has been fetched from the database. Otherwise,
-  /// the id will be null.
-  int? id;
-
   String title;
-
-  int userId;
-
-  _i2.User? user;
 
   String? picture;
 
   int target;
 
   String? unit;
-
-  int categoryId;
 
   _i2.Category? category;
 
@@ -133,25 +90,11 @@ abstract class Goal implements _i1.SerializableModel {
 
   String? remindTimezone;
 
-  List<_i2.JournalLog>? journal;
-
-  int? currentStreak;
-
-  int? highestStreak;
-
-  bool active;
-
-  bool archived;
-
-  Goal copyWith({
-    int? id,
+  CreateGoalDto copyWith({
     String? title,
-    int? userId,
-    _i2.User? user,
     String? picture,
     int? target,
     String? unit,
-    int? categoryId,
     _i2.Category? category,
     List<_i2.RepeatableDays>? days,
     DateTime? end,
@@ -160,23 +103,14 @@ abstract class Goal implements _i1.SerializableModel {
     int? remindMinutes,
     bool? remindHalf,
     String? remindTimezone,
-    List<_i2.JournalLog>? journal,
-    int? currentStreak,
-    int? highestStreak,
-    bool? active,
-    bool? archived,
   });
   @override
   Map<String, dynamic> toJson() {
     return {
-      if (id != null) 'id': id,
       'title': title,
-      'userId': userId,
-      if (user != null) 'user': user?.toJson(),
       if (picture != null) 'picture': picture,
       'target': target,
       if (unit != null) 'unit': unit,
-      'categoryId': categoryId,
       if (category != null) 'category': category?.toJson(),
       if (days != null) 'days': days?.toJson(valueToJson: (v) => v.toJson()),
       if (end != null) 'end': end?.toJson(),
@@ -185,12 +119,6 @@ abstract class Goal implements _i1.SerializableModel {
       if (remindMinutes != null) 'remindMinutes': remindMinutes,
       if (remindHalf != null) 'remindHalf': remindHalf,
       if (remindTimezone != null) 'remindTimezone': remindTimezone,
-      if (journal != null)
-        'journal': journal?.toJson(valueToJson: (v) => v.toJson()),
-      if (currentStreak != null) 'currentStreak': currentStreak,
-      if (highestStreak != null) 'highestStreak': highestStreak,
-      'active': active,
-      'archived': archived,
     };
   }
 
@@ -202,16 +130,12 @@ abstract class Goal implements _i1.SerializableModel {
 
 class _Undefined {}
 
-class _GoalImpl extends Goal {
-  _GoalImpl({
-    int? id,
+class _CreateGoalDtoImpl extends CreateGoalDto {
+  _CreateGoalDtoImpl({
     required String title,
-    required int userId,
-    _i2.User? user,
     String? picture,
     required int target,
     String? unit,
-    required int categoryId,
     _i2.Category? category,
     List<_i2.RepeatableDays>? days,
     DateTime? end,
@@ -220,20 +144,11 @@ class _GoalImpl extends Goal {
     int? remindMinutes,
     bool? remindHalf,
     String? remindTimezone,
-    List<_i2.JournalLog>? journal,
-    int? currentStreak,
-    int? highestStreak,
-    required bool active,
-    required bool archived,
   }) : super._(
-          id: id,
           title: title,
-          userId: userId,
-          user: user,
           picture: picture,
           target: target,
           unit: unit,
-          categoryId: categoryId,
           category: category,
           days: days,
           end: end,
@@ -242,23 +157,14 @@ class _GoalImpl extends Goal {
           remindMinutes: remindMinutes,
           remindHalf: remindHalf,
           remindTimezone: remindTimezone,
-          journal: journal,
-          currentStreak: currentStreak,
-          highestStreak: highestStreak,
-          active: active,
-          archived: archived,
         );
 
   @override
-  Goal copyWith({
-    Object? id = _Undefined,
+  CreateGoalDto copyWith({
     String? title,
-    int? userId,
-    Object? user = _Undefined,
     Object? picture = _Undefined,
     int? target,
     Object? unit = _Undefined,
-    int? categoryId,
     Object? category = _Undefined,
     Object? days = _Undefined,
     Object? end = _Undefined,
@@ -267,21 +173,12 @@ class _GoalImpl extends Goal {
     Object? remindMinutes = _Undefined,
     Object? remindHalf = _Undefined,
     Object? remindTimezone = _Undefined,
-    Object? journal = _Undefined,
-    Object? currentStreak = _Undefined,
-    Object? highestStreak = _Undefined,
-    bool? active,
-    bool? archived,
   }) {
-    return Goal(
-      id: id is int? ? id : this.id,
+    return CreateGoalDto(
       title: title ?? this.title,
-      userId: userId ?? this.userId,
-      user: user is _i2.User? ? user : this.user?.copyWith(),
       picture: picture is String? ? picture : this.picture,
       target: target ?? this.target,
       unit: unit is String? ? unit : this.unit,
-      categoryId: categoryId ?? this.categoryId,
       category:
           category is _i2.Category? ? category : this.category?.copyWith(),
       days: days is List<_i2.RepeatableDays>? ? days : this.days?.clone(),
@@ -292,12 +189,6 @@ class _GoalImpl extends Goal {
       remindHalf: remindHalf is bool? ? remindHalf : this.remindHalf,
       remindTimezone:
           remindTimezone is String? ? remindTimezone : this.remindTimezone,
-      journal:
-          journal is List<_i2.JournalLog>? ? journal : this.journal?.clone(),
-      currentStreak: currentStreak is int? ? currentStreak : this.currentStreak,
-      highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
-      active: active ?? this.active,
-      archived: archived ?? this.archived,
     );
   }
 }
