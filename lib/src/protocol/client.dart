@@ -10,9 +10,9 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'dart:async' as _i2;
+import 'package:fixie_client/src/protocol/category/category.dart' as _i3;
 import 'package:fixie_client/src/protocol/category/create_category_dto.dart'
-    as _i3;
-import 'package:fixie_client/src/protocol/category/category.dart' as _i4;
+    as _i4;
 import 'package:fixie_client/src/protocol/goal.dart' as _i5;
 import 'package:fixie_client/src/protocol/journal_log.dart' as _i6;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i7;
@@ -26,15 +26,15 @@ class EndpointCategories extends _i1.EndpointRef {
   @override
   String get name => 'categories';
 
-  _i2.Future<int?> addCategory(_i3.CreateCategoryDto dto) =>
-      caller.callServerEndpoint<int?>(
+  _i2.Future<_i3.Category?> addCategory(_i4.CreateCategoryDto dto) =>
+      caller.callServerEndpoint<_i3.Category?>(
         'categories',
         'addCategory',
         {'dto': dto},
       );
 
-  _i2.Future<List<_i4.Category>> getActiveCategories() =>
-      caller.callServerEndpoint<List<_i4.Category>>(
+  _i2.Future<List<_i3.Category>> getActiveCategories() =>
+      caller.callServerEndpoint<List<_i3.Category>>(
         'categories',
         'getActiveCategories',
         {},
