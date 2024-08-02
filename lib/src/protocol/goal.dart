@@ -20,7 +20,8 @@ abstract class Goal implements _i1.SerializableModel {
     this.picture,
     required this.target,
     this.unit,
-    required this.category,
+    required this.categoryId,
+    this.category,
     this.days,
     this.end,
     required this.setRemind,
@@ -41,7 +42,8 @@ abstract class Goal implements _i1.SerializableModel {
     String? picture,
     required int target,
     String? unit,
-    required _i2.Category category,
+    required int categoryId,
+    _i2.Category? category,
     List<_i2.RepeatableDays>? days,
     DateTime? end,
     required bool setRemind,
@@ -66,8 +68,11 @@ abstract class Goal implements _i1.SerializableModel {
       picture: jsonSerialization['picture'] as String?,
       target: jsonSerialization['target'] as int,
       unit: jsonSerialization['unit'] as String?,
-      category: _i2.Category.fromJson(
-          (jsonSerialization['category'] as Map<String, dynamic>)),
+      categoryId: jsonSerialization['categoryId'] as int,
+      category: jsonSerialization['category'] == null
+          ? null
+          : _i2.Category.fromJson(
+              (jsonSerialization['category'] as Map<String, dynamic>)),
       days: (jsonSerialization['days'] as List?)
           ?.map((e) => _i2.RepeatableDays.fromJson((e as Map<String, dynamic>)))
           .toList(),
@@ -104,7 +109,9 @@ abstract class Goal implements _i1.SerializableModel {
 
   String? unit;
 
-  _i2.Category category;
+  int categoryId;
+
+  _i2.Category? category;
 
   List<_i2.RepeatableDays>? days;
 
@@ -134,6 +141,7 @@ abstract class Goal implements _i1.SerializableModel {
     String? picture,
     int? target,
     String? unit,
+    int? categoryId,
     _i2.Category? category,
     List<_i2.RepeatableDays>? days,
     DateTime? end,
@@ -156,7 +164,8 @@ abstract class Goal implements _i1.SerializableModel {
       if (picture != null) 'picture': picture,
       'target': target,
       if (unit != null) 'unit': unit,
-      'category': category.toJson(),
+      'categoryId': categoryId,
+      if (category != null) 'category': category?.toJson(),
       if (days != null) 'days': days?.toJson(valueToJson: (v) => v.toJson()),
       if (end != null) 'end': end?.toJson(),
       'setRemind': setRemind,
@@ -188,7 +197,8 @@ class _GoalImpl extends Goal {
     String? picture,
     required int target,
     String? unit,
-    required _i2.Category category,
+    required int categoryId,
+    _i2.Category? category,
     List<_i2.RepeatableDays>? days,
     DateTime? end,
     required bool setRemind,
@@ -207,6 +217,7 @@ class _GoalImpl extends Goal {
           picture: picture,
           target: target,
           unit: unit,
+          categoryId: categoryId,
           category: category,
           days: days,
           end: end,
@@ -229,7 +240,8 @@ class _GoalImpl extends Goal {
     Object? picture = _Undefined,
     int? target,
     Object? unit = _Undefined,
-    _i2.Category? category,
+    int? categoryId,
+    Object? category = _Undefined,
     Object? days = _Undefined,
     Object? end = _Undefined,
     bool? setRemind,
@@ -249,7 +261,9 @@ class _GoalImpl extends Goal {
       picture: picture is String? ? picture : this.picture,
       target: target ?? this.target,
       unit: unit is String? ? unit : this.unit,
-      category: category ?? this.category.copyWith(),
+      categoryId: categoryId ?? this.categoryId,
+      category:
+          category is _i2.Category? ? category : this.category?.copyWith(),
       days: days is List<_i2.RepeatableDays>? ? days : this.days?.clone(),
       end: end is DateTime? ? end : this.end,
       setRemind: setRemind ?? this.setRemind,
