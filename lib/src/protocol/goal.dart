@@ -32,6 +32,8 @@ abstract class Goal implements _i1.SerializableModel {
     this.journal,
     this.currentStreak,
     this.highestStreak,
+    required this.active,
+    required this.archived,
   });
 
   factory Goal({
@@ -54,6 +56,8 @@ abstract class Goal implements _i1.SerializableModel {
     List<_i2.JournalLog>? journal,
     int? currentStreak,
     int? highestStreak,
+    required bool active,
+    required bool archived,
   }) = _GoalImpl;
 
   factory Goal.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -89,6 +93,8 @@ abstract class Goal implements _i1.SerializableModel {
           .toList(),
       currentStreak: jsonSerialization['currentStreak'] as int?,
       highestStreak: jsonSerialization['highestStreak'] as int?,
+      active: jsonSerialization['active'] as bool,
+      archived: jsonSerialization['archived'] as bool,
     );
   }
 
@@ -133,6 +139,10 @@ abstract class Goal implements _i1.SerializableModel {
 
   int? highestStreak;
 
+  bool active;
+
+  bool archived;
+
   Goal copyWith({
     int? id,
     String? title,
@@ -153,6 +163,8 @@ abstract class Goal implements _i1.SerializableModel {
     List<_i2.JournalLog>? journal,
     int? currentStreak,
     int? highestStreak,
+    bool? active,
+    bool? archived,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -177,6 +189,8 @@ abstract class Goal implements _i1.SerializableModel {
         'journal': journal?.toJson(valueToJson: (v) => v.toJson()),
       if (currentStreak != null) 'currentStreak': currentStreak,
       if (highestStreak != null) 'highestStreak': highestStreak,
+      'active': active,
+      'archived': archived,
     };
   }
 
@@ -209,6 +223,8 @@ class _GoalImpl extends Goal {
     List<_i2.JournalLog>? journal,
     int? currentStreak,
     int? highestStreak,
+    required bool active,
+    required bool archived,
   }) : super._(
           id: id,
           title: title,
@@ -229,6 +245,8 @@ class _GoalImpl extends Goal {
           journal: journal,
           currentStreak: currentStreak,
           highestStreak: highestStreak,
+          active: active,
+          archived: archived,
         );
 
   @override
@@ -252,6 +270,8 @@ class _GoalImpl extends Goal {
     Object? journal = _Undefined,
     Object? currentStreak = _Undefined,
     Object? highestStreak = _Undefined,
+    bool? active,
+    bool? archived,
   }) {
     return Goal(
       id: id is int? ? id : this.id,
@@ -276,6 +296,8 @@ class _GoalImpl extends Goal {
           journal is List<_i2.JournalLog>? ? journal : this.journal?.clone(),
       currentStreak: currentStreak is int? ? currentStreak : this.currentStreak,
       highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
+      active: active ?? this.active,
+      archived: archived ?? this.archived,
     );
   }
 }

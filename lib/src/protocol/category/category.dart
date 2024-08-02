@@ -16,6 +16,7 @@ abstract class Category implements _i1.SerializableModel {
     required this.title,
     required this.color,
     this.icon,
+    this.userId,
   });
 
   factory Category({
@@ -23,6 +24,7 @@ abstract class Category implements _i1.SerializableModel {
     required String title,
     required String color,
     String? icon,
+    int? userId,
   }) = _CategoryImpl;
 
   factory Category.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -31,6 +33,7 @@ abstract class Category implements _i1.SerializableModel {
       title: jsonSerialization['title'] as String,
       color: jsonSerialization['color'] as String,
       icon: jsonSerialization['icon'] as String?,
+      userId: jsonSerialization['userId'] as int?,
     );
   }
 
@@ -45,11 +48,14 @@ abstract class Category implements _i1.SerializableModel {
 
   String? icon;
 
+  int? userId;
+
   Category copyWith({
     int? id,
     String? title,
     String? color,
     String? icon,
+    int? userId,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -58,6 +64,7 @@ abstract class Category implements _i1.SerializableModel {
       'title': title,
       'color': color,
       if (icon != null) 'icon': icon,
+      if (userId != null) 'userId': userId,
     };
   }
 
@@ -75,11 +82,13 @@ class _CategoryImpl extends Category {
     required String title,
     required String color,
     String? icon,
+    int? userId,
   }) : super._(
           id: id,
           title: title,
           color: color,
           icon: icon,
+          userId: userId,
         );
 
   @override
@@ -88,12 +97,14 @@ class _CategoryImpl extends Category {
     String? title,
     String? color,
     Object? icon = _Undefined,
+    Object? userId = _Undefined,
   }) {
     return Category(
       id: id is int? ? id : this.id,
       title: title ?? this.title,
       color: color ?? this.color,
       icon: icon is String? ? icon : this.icon,
+      userId: userId is int? ? userId : this.userId,
     );
   }
 }
