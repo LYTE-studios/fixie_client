@@ -13,12 +13,10 @@ import 'dart:async' as _i2;
 import 'package:fixie_client/src/protocol/category/category.dart' as _i3;
 import 'package:fixie_client/src/protocol/category/create_category_dto.dart'
     as _i4;
-import 'package:fixie_client/src/protocol/goals/create_goal_dto.dart' as _i5;
-import 'package:fixie_client/src/protocol/goals/goal.dart' as _i6;
-import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i7;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i8;
-import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i9;
-import 'protocol.dart' as _i10;
+import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i5;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i6;
+import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i7;
+import 'protocol.dart' as _i8;
 
 /// {@category Endpoint}
 class EndpointCategories extends _i1.EndpointRef {
@@ -64,48 +62,6 @@ class EndpointFile extends _i1.EndpointRef {
 }
 
 /// {@category Endpoint}
-class EndpointGoals extends _i1.EndpointRef {
-  EndpointGoals(_i1.EndpointCaller caller) : super(caller);
-
-  @override
-  String get name => 'goals';
-
-  _i2.Future<int> addGoal(_i5.CreateGoalDto dto) =>
-      caller.callServerEndpoint<int>(
-        'goals',
-        'addGoal',
-        {'dto': dto},
-      );
-
-  _i2.Future<_i6.Goal?> getGoal(int? goalId) =>
-      caller.callServerEndpoint<_i6.Goal?>(
-        'goals',
-        'getGoal',
-        {'goalId': goalId},
-      );
-
-  _i2.Future<List<_i6.Goal>?> getGoals() =>
-      caller.callServerEndpoint<List<_i6.Goal>?>(
-        'goals',
-        'getGoals',
-        {},
-      );
-
-  _i2.Future<_i6.Goal> updateGoal(_i6.Goal newGoal) =>
-      caller.callServerEndpoint<_i6.Goal>(
-        'goals',
-        'updateGoal',
-        {'newGoal': newGoal},
-      );
-
-  _i2.Future<int> deleteGoal(int goalId) => caller.callServerEndpoint<int>(
-        'goals',
-        'deleteGoal',
-        {'goalId': goalId},
-      );
-}
-
-/// {@category Endpoint}
 class EndpointJournal extends _i1.EndpointRef {
   EndpointJournal(_i1.EndpointCaller caller) : super(caller);
 
@@ -113,7 +69,7 @@ class EndpointJournal extends _i1.EndpointRef {
   String get name => 'journal';
 
   _i2.Future<Map<String, String?>> getImageUploadDescription({
-    required _i7.JournalLog log,
+    required _i5.JournalLog log,
     required String fileName,
   }) =>
       caller.callServerEndpoint<Map<String, String?>>(
@@ -131,11 +87,11 @@ class EndpointJournal extends _i1.EndpointRef {
         {'path': path},
       );
 
-  _i2.Future<List<_i7.JournalLog>> getLogsForRange({
+  _i2.Future<List<_i5.JournalLog>> getLogsForRange({
     required DateTime start,
     required DateTime end,
   }) =>
-      caller.callServerEndpoint<List<_i7.JournalLog>>(
+      caller.callServerEndpoint<List<_i5.JournalLog>>(
         'journal',
         'getLogsForRange',
         {
@@ -146,7 +102,7 @@ class EndpointJournal extends _i1.EndpointRef {
 
   _i2.Future<int> addLog(
     int goalId,
-    _i7.JournalLog log,
+    _i5.JournalLog log,
   ) =>
       caller.callServerEndpoint<int>(
         'journal',
@@ -157,22 +113,22 @@ class EndpointJournal extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i7.JournalLog?> getLog(int? logId) =>
-      caller.callServerEndpoint<_i7.JournalLog?>(
+  _i2.Future<_i5.JournalLog?> getLog(int? logId) =>
+      caller.callServerEndpoint<_i5.JournalLog?>(
         'journal',
         'getLog',
         {'logId': logId},
       );
 
-  _i2.Future<List<_i7.JournalLog>?> getJournal(int? goalId) =>
-      caller.callServerEndpoint<List<_i7.JournalLog>?>(
+  _i2.Future<List<_i5.JournalLog>?> getJournal(int? goalId) =>
+      caller.callServerEndpoint<List<_i5.JournalLog>?>(
         'journal',
         'getJournal',
         {'goalId': goalId},
       );
 
-  _i2.Future<_i7.JournalLog> updateLog(_i7.JournalLog editedLog) =>
-      caller.callServerEndpoint<_i7.JournalLog>(
+  _i2.Future<_i5.JournalLog> updateLog(_i5.JournalLog editedLog) =>
+      caller.callServerEndpoint<_i5.JournalLog>(
         'journal',
         'updateLog',
         {'editedLog': editedLog},
@@ -187,7 +143,7 @@ class EndpointProfile extends _i1.EndpointRef {
   String get name => 'profile';
 
   _i2.Future<int> createUser(
-    _i8.UserInfo? user,
+    _i6.UserInfo? user,
     DateTime birthday,
   ) =>
       caller.callServerEndpoint<int>(
@@ -199,8 +155,8 @@ class EndpointProfile extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i9.UserProfileDto> getProfileData() =>
-      caller.callServerEndpoint<_i9.UserProfileDto>(
+  _i2.Future<_i7.UserProfileDto> getProfileData() =>
+      caller.callServerEndpoint<_i7.UserProfileDto>(
         'profile',
         'getProfileData',
         {},
@@ -222,10 +178,10 @@ class EndpointProfile extends _i1.EndpointRef {
 
 class _Modules {
   _Modules(Client client) {
-    auth = _i8.Caller(client);
+    auth = _i6.Caller(client);
   }
 
-  late final _i8.Caller auth;
+  late final _i6.Caller auth;
 }
 
 class Client extends _i1.ServerpodClient {
@@ -243,7 +199,7 @@ class Client extends _i1.ServerpodClient {
     Function(_i1.MethodCallContext)? onSucceededCall,
   }) : super(
           host,
-          _i10.Protocol(),
+          _i8.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -253,7 +209,6 @@ class Client extends _i1.ServerpodClient {
         ) {
     categories = EndpointCategories(this);
     file = EndpointFile(this);
-    goals = EndpointGoals(this);
     journal = EndpointJournal(this);
     profile = EndpointProfile(this);
     modules = _Modules(this);
@@ -262,8 +217,6 @@ class Client extends _i1.ServerpodClient {
   late final EndpointCategories categories;
 
   late final EndpointFile file;
-
-  late final EndpointGoals goals;
 
   late final EndpointJournal journal;
 
@@ -275,7 +228,6 @@ class Client extends _i1.ServerpodClient {
   Map<String, _i1.EndpointRef> get endpointRefLookup => {
         'categories': categories,
         'file': file,
-        'goals': goals,
         'journal': journal,
         'profile': profile,
       };

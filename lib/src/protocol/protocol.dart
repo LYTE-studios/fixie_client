@@ -23,9 +23,8 @@ import 'users/user.dart' as _i11;
 import 'users/user_profile_dto.dart' as _i12;
 import 'protocol.dart' as _i13;
 import 'package:fixie_client/src/protocol/category/category.dart' as _i14;
-import 'package:fixie_client/src/protocol/goals/goal.dart' as _i15;
-import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i16;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i17;
+import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i15;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i16;
 export 'category/category.dart';
 export 'category/create_category_dto.dart';
 export 'endpoint_exception.dart';
@@ -146,26 +145,21 @@ class Protocol extends _i1.SerializationManager {
       return (data as List).map((e) => deserialize<_i14.Category>(e)).toList()
           as dynamic;
     }
-    if (t == _i1.getType<List<_i15.Goal>?>()) {
-      return (data != null
-          ? (data as List).map((e) => deserialize<_i15.Goal>(e)).toList()
-          : null) as dynamic;
-    }
     if (t == Map<String, String?>) {
       return (data as Map).map((k, v) =>
           MapEntry(deserialize<String>(k), deserialize<String?>(v))) as dynamic;
     }
-    if (t == List<_i16.JournalLog>) {
-      return (data as List).map((e) => deserialize<_i16.JournalLog>(e)).toList()
+    if (t == List<_i15.JournalLog>) {
+      return (data as List).map((e) => deserialize<_i15.JournalLog>(e)).toList()
           as dynamic;
     }
-    if (t == _i1.getType<List<_i16.JournalLog>?>()) {
+    if (t == _i1.getType<List<_i15.JournalLog>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i16.JournalLog>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i15.JournalLog>(e)).toList()
           : null) as dynamic;
     }
     try {
-      return _i17.Protocol().deserialize<T>(data, t);
+      return _i16.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -173,7 +167,7 @@ class Protocol extends _i1.SerializationManager {
   @override
   String? getClassNameForObject(Object data) {
     String? className;
-    className = _i17.Protocol().getClassNameForObject(data);
+    className = _i16.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -217,7 +211,7 @@ class Protocol extends _i1.SerializationManager {
   dynamic deserializeByClassName(Map<String, dynamic> data) {
     if (data['className'].startsWith('serverpod_auth.')) {
       data['className'] = data['className'].substring(15);
-      return _i17.Protocol().deserializeByClassName(data);
+      return _i16.Protocol().deserializeByClassName(data);
     }
     if (data['className'] == 'Category') {
       return deserialize<_i2.Category>(data['data']);

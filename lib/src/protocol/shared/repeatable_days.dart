@@ -9,18 +9,23 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
+import '../protocol.dart' as _i2;
 
 abstract class RepeatableDays implements _i1.SerializableModel {
   RepeatableDays._({
     this.id,
     required this.day,
     this.extraInfo,
+    required this.goalId,
+    this.goal,
   });
 
   factory RepeatableDays({
     int? id,
     required int day,
     String? extraInfo,
+    required int goalId,
+    _i2.Goal? goal,
   }) = _RepeatableDaysImpl;
 
   factory RepeatableDays.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -28,6 +33,11 @@ abstract class RepeatableDays implements _i1.SerializableModel {
       id: jsonSerialization['id'] as int?,
       day: jsonSerialization['day'] as int,
       extraInfo: jsonSerialization['extraInfo'] as String?,
+      goalId: jsonSerialization['goalId'] as int,
+      goal: jsonSerialization['goal'] == null
+          ? null
+          : _i2.Goal.fromJson(
+              (jsonSerialization['goal'] as Map<String, dynamic>)),
     );
   }
 
@@ -40,10 +50,16 @@ abstract class RepeatableDays implements _i1.SerializableModel {
 
   String? extraInfo;
 
+  int goalId;
+
+  _i2.Goal? goal;
+
   RepeatableDays copyWith({
     int? id,
     int? day,
     String? extraInfo,
+    int? goalId,
+    _i2.Goal? goal,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -51,6 +67,8 @@ abstract class RepeatableDays implements _i1.SerializableModel {
       if (id != null) 'id': id,
       'day': day,
       if (extraInfo != null) 'extraInfo': extraInfo,
+      'goalId': goalId,
+      if (goal != null) 'goal': goal?.toJson(),
     };
   }
 
@@ -67,10 +85,14 @@ class _RepeatableDaysImpl extends RepeatableDays {
     int? id,
     required int day,
     String? extraInfo,
+    required int goalId,
+    _i2.Goal? goal,
   }) : super._(
           id: id,
           day: day,
           extraInfo: extraInfo,
+          goalId: goalId,
+          goal: goal,
         );
 
   @override
@@ -78,11 +100,15 @@ class _RepeatableDaysImpl extends RepeatableDays {
     Object? id = _Undefined,
     int? day,
     Object? extraInfo = _Undefined,
+    int? goalId,
+    Object? goal = _Undefined,
   }) {
     return RepeatableDays(
       id: id is int? ? id : this.id,
       day: day ?? this.day,
       extraInfo: extraInfo is String? ? extraInfo : this.extraInfo,
+      goalId: goalId ?? this.goalId,
+      goal: goal is _i2.Goal? ? goal : this.goal?.copyWith(),
     );
   }
 }
