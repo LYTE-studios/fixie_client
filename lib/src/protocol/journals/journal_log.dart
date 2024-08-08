@@ -21,6 +21,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     this.loggedValue,
     required this.createdAt,
     required this.modifiedAt,
+    required this.date,
   });
 
   factory JournalLog({
@@ -32,6 +33,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     double? loggedValue,
     required DateTime createdAt,
     required DateTime modifiedAt,
+    required DateTime date,
   }) = _JournalLogImpl;
 
   factory JournalLog.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -49,6 +51,7 @@ abstract class JournalLog implements _i1.SerializableModel {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
       modifiedAt:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['modifiedAt']),
+      date: _i1.DateTimeJsonExtension.fromJson(jsonSerialization['date']),
     );
   }
 
@@ -71,6 +74,8 @@ abstract class JournalLog implements _i1.SerializableModel {
 
   DateTime modifiedAt;
 
+  DateTime date;
+
   JournalLog copyWith({
     int? id,
     int? goalId,
@@ -80,6 +85,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     double? loggedValue,
     DateTime? createdAt,
     DateTime? modifiedAt,
+    DateTime? date,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -92,6 +98,7 @@ abstract class JournalLog implements _i1.SerializableModel {
       if (loggedValue != null) 'loggedValue': loggedValue,
       'createdAt': createdAt.toJson(),
       'modifiedAt': modifiedAt.toJson(),
+      'date': date.toJson(),
     };
   }
 
@@ -113,6 +120,7 @@ class _JournalLogImpl extends JournalLog {
     double? loggedValue,
     required DateTime createdAt,
     required DateTime modifiedAt,
+    required DateTime date,
   }) : super._(
           id: id,
           goalId: goalId,
@@ -122,6 +130,7 @@ class _JournalLogImpl extends JournalLog {
           loggedValue: loggedValue,
           createdAt: createdAt,
           modifiedAt: modifiedAt,
+          date: date,
         );
 
   @override
@@ -134,6 +143,7 @@ class _JournalLogImpl extends JournalLog {
     Object? loggedValue = _Undefined,
     DateTime? createdAt,
     DateTime? modifiedAt,
+    DateTime? date,
   }) {
     return JournalLog(
       id: id is int? ? id : this.id,
@@ -144,6 +154,7 @@ class _JournalLogImpl extends JournalLog {
       loggedValue: loggedValue is double? ? loggedValue : this.loggedValue,
       createdAt: createdAt ?? this.createdAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
+      date: date ?? this.date,
     );
   }
 }
