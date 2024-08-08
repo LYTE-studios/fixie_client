@@ -158,11 +158,11 @@ class EndpointJournal extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<int> addLog(
+  _i2.Future<_i8.JournalLog> addLog(
     int goalId,
     _i8.JournalLog log,
   ) =>
-      caller.callServerEndpoint<int>(
+      caller.callServerEndpoint<_i8.JournalLog>(
         'journal',
         'addLog',
         {
