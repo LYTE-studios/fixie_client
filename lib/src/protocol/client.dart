@@ -117,6 +117,12 @@ class EndpointGoals extends _i1.EndpointRef {
         'deleteGoal',
         {'goalId': goalId},
       );
+
+  _i2.Future<void> resetGoals() => caller.callServerEndpoint<void>(
+        'goals',
+        'resetGoals',
+        {},
+      );
 }
 
 /// {@category Endpoint}
