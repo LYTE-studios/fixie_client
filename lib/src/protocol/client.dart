@@ -206,6 +206,12 @@ class EndpointProfile extends _i1.EndpointRef {
   @override
   String get name => 'profile';
 
+  _i2.Future<bool> deleteAccount() => caller.callServerEndpoint<bool>(
+        'profile',
+        'deleteAccount',
+        {},
+      );
+
   _i2.Future<int> createUser(
     _i9.UserInfo? user,
     DateTime birthday,
