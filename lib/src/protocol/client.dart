@@ -19,7 +19,9 @@ import 'package:fixie_client/src/protocol/shared/repeatable_days.dart' as _i7;
 import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i8;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i9;
 import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i10;
-import 'protocol.dart' as _i11;
+import 'package:fixie_client/src/protocol/statistics/category_statistics.dart'
+    as _i11;
+import 'protocol.dart' as _i12;
 
 /// {@category Endpoint}
 class EndpointCategories extends _i1.EndpointRef {
@@ -246,6 +248,29 @@ class EndpointProfile extends _i1.EndpointRef {
       );
 }
 
+/// {@category Endpoint}
+class EndpointStatistics extends _i1.EndpointRef {
+  EndpointStatistics(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'statistics';
+
+  _i2.Future<_i11.CategoryStatistics?> getStatisticsForCategory(
+    _i3.Category category,
+    DateTime start,
+    DateTime end,
+  ) =>
+      caller.callServerEndpoint<_i11.CategoryStatistics?>(
+        'statistics',
+        'getStatisticsForCategory',
+        {
+          'category': category,
+          'start': start,
+          'end': end,
+        },
+      );
+}
+
 class _Modules {
   _Modules(Client client) {
     auth = _i9.Caller(client);
@@ -269,7 +294,7 @@ class Client extends _i1.ServerpodClient {
     Function(_i1.MethodCallContext)? onSucceededCall,
   }) : super(
           host,
-          _i11.Protocol(),
+          _i12.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -282,6 +307,7 @@ class Client extends _i1.ServerpodClient {
     goals = EndpointGoals(this);
     journal = EndpointJournal(this);
     profile = EndpointProfile(this);
+    statistics = EndpointStatistics(this);
     modules = _Modules(this);
   }
 
@@ -295,6 +321,8 @@ class Client extends _i1.ServerpodClient {
 
   late final EndpointProfile profile;
 
+  late final EndpointStatistics statistics;
+
   late final _Modules modules;
 
   @override
@@ -304,6 +332,7 @@ class Client extends _i1.ServerpodClient {
         'goals': goals,
         'journal': journal,
         'profile': profile,
+        'statistics': statistics,
       };
 
   @override
