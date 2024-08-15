@@ -246,6 +246,27 @@ class EndpointProfile extends _i1.EndpointRef {
         'updateName',
         {'name': name},
       );
+
+  _i2.Future<Map<String, String?>> getImageUploadDescription(
+          {required String fileName}) =>
+      caller.callServerEndpoint<Map<String, String?>>(
+        'profile',
+        'getImageUploadDescription',
+        {'fileName': fileName},
+      );
+
+  _i2.Future<bool> verifyUpload(String path) => caller.callServerEndpoint<bool>(
+        'profile',
+        'verifyUpload',
+        {'path': path},
+      );
+
+  _i2.Future<int> updateProfilePicture(String url) =>
+      caller.callServerEndpoint<int>(
+        'profile',
+        'updateProfilePicture',
+        {'url': url},
+      );
 }
 
 /// {@category Endpoint}
