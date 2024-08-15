@@ -120,6 +120,13 @@ class EndpointGoals extends _i1.EndpointRef {
         {'goalId': goalId},
       );
 
+  _i2.Future<void> permanentlyDeleteAllGoals() =>
+      caller.callServerEndpoint<void>(
+        'goals',
+        'permanentlyDeleteAllGoals',
+        {},
+      );
+
   _i2.Future<void> resetGoals() => caller.callServerEndpoint<void>(
         'goals',
         'resetGoals',
