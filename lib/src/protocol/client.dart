@@ -107,11 +107,17 @@ class EndpointGoals extends _i1.EndpointRef {
         {},
       );
 
-  _i2.Future<_i5.Goal> updateGoal(_i5.Goal newGoal) =>
+  _i2.Future<_i5.Goal> updateGoal(
+    int goalId,
+    _i6.CreateGoalDto newGoal,
+  ) =>
       caller.callServerEndpoint<_i5.Goal>(
         'goals',
         'updateGoal',
-        {'newGoal': newGoal},
+        {
+          'goalId': goalId,
+          'newGoal': newGoal,
+        },
       );
 
   _i2.Future<int> deleteGoal(int goalId) => caller.callServerEndpoint<int>(
