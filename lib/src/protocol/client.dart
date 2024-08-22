@@ -19,9 +19,11 @@ import 'package:fixie_client/src/protocol/shared/repeatable_days.dart' as _i7;
 import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i8;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i9;
 import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i10;
-import 'package:fixie_client/src/protocol/statistics/category_statistics.dart'
+import 'package:fixie_client/src/protocol/statistics/goal_statistics.dart'
     as _i11;
-import 'protocol.dart' as _i12;
+import 'package:fixie_client/src/protocol/statistics/category_statistics.dart'
+    as _i12;
+import 'protocol.dart' as _i13;
 
 /// {@category Endpoint}
 class EndpointCategories extends _i1.EndpointRef {
@@ -296,12 +298,19 @@ class EndpointStatistics extends _i1.EndpointRef {
   @override
   String get name => 'statistics';
 
-  _i2.Future<_i11.CategoryStatistics?> getStatisticsForCategory(
+  _i2.Future<_i11.GoalStatistics?> getStatisticsForGoal(_i5.Goal goal) =>
+      caller.callServerEndpoint<_i11.GoalStatistics?>(
+        'statistics',
+        'getStatisticsForGoal',
+        {'goal': goal},
+      );
+
+  _i2.Future<_i12.CategoryStatistics?> getStatisticsForCategory(
     _i3.Category category,
     DateTime start,
     DateTime end,
   ) =>
-      caller.callServerEndpoint<_i11.CategoryStatistics?>(
+      caller.callServerEndpoint<_i12.CategoryStatistics?>(
         'statistics',
         'getStatisticsForCategory',
         {
@@ -335,7 +344,7 @@ class Client extends _i1.ServerpodClient {
     Function(_i1.MethodCallContext)? onSucceededCall,
   }) : super(
           host,
-          _i12.Protocol(),
+          _i13.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
