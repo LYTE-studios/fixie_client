@@ -37,6 +37,13 @@ class EndpointCategories extends _i1.EndpointRef {
         {'dto': dto},
       );
 
+  _i2.Future<_i3.Category?> editCategory(_i3.Category category) =>
+      caller.callServerEndpoint<_i3.Category?>(
+        'categories',
+        'editCategory',
+        {'category': category},
+      );
+
   _i2.Future<List<_i3.Category>> getActiveCategories() =>
       caller.callServerEndpoint<List<_i3.Category>>(
         'categories',
