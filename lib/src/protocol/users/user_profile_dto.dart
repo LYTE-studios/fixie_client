@@ -17,6 +17,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     required this.daysSinceCreation,
     this.email,
     this.picture,
+    required this.hasPassedOnboarding,
   });
 
   factory UserProfileDto({
@@ -25,6 +26,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     required int daysSinceCreation,
     String? email,
     String? picture,
+    required bool hasPassedOnboarding,
   }) = _UserProfileDtoImpl;
 
   factory UserProfileDto.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -36,6 +38,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
       daysSinceCreation: jsonSerialization['daysSinceCreation'] as int,
       email: jsonSerialization['email'] as String?,
       picture: jsonSerialization['picture'] as String?,
+      hasPassedOnboarding: jsonSerialization['hasPassedOnboarding'] as bool,
     );
   }
 
@@ -49,12 +52,15 @@ abstract class UserProfileDto implements _i1.SerializableModel {
 
   String? picture;
 
+  bool hasPassedOnboarding;
+
   UserProfileDto copyWith({
     String? name,
     DateTime? birthday,
     int? daysSinceCreation,
     String? email,
     String? picture,
+    bool? hasPassedOnboarding,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -64,6 +70,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
       'daysSinceCreation': daysSinceCreation,
       if (email != null) 'email': email,
       if (picture != null) 'picture': picture,
+      'hasPassedOnboarding': hasPassedOnboarding,
     };
   }
 
@@ -82,12 +89,14 @@ class _UserProfileDtoImpl extends UserProfileDto {
     required int daysSinceCreation,
     String? email,
     String? picture,
+    required bool hasPassedOnboarding,
   }) : super._(
           name: name,
           birthday: birthday,
           daysSinceCreation: daysSinceCreation,
           email: email,
           picture: picture,
+          hasPassedOnboarding: hasPassedOnboarding,
         );
 
   @override
@@ -97,6 +106,7 @@ class _UserProfileDtoImpl extends UserProfileDto {
     int? daysSinceCreation,
     Object? email = _Undefined,
     Object? picture = _Undefined,
+    bool? hasPassedOnboarding,
   }) {
     return UserProfileDto(
       name: name ?? this.name,
@@ -104,6 +114,7 @@ class _UserProfileDtoImpl extends UserProfileDto {
       daysSinceCreation: daysSinceCreation ?? this.daysSinceCreation,
       email: email is String? ? email : this.email,
       picture: picture is String? ? picture : this.picture,
+      hasPassedOnboarding: hasPassedOnboarding ?? this.hasPassedOnboarding,
     );
   }
 }
