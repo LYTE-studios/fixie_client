@@ -21,6 +21,7 @@ abstract class User implements _i1.SerializableModel {
     this.goals,
     this.highestStreak,
     this.picture,
+    this.hasPassedOnboarding,
   });
 
   factory User({
@@ -31,6 +32,7 @@ abstract class User implements _i1.SerializableModel {
     List<_i3.Goal>? goals,
     int? highestStreak,
     String? picture,
+    bool? hasPassedOnboarding,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -49,6 +51,7 @@ abstract class User implements _i1.SerializableModel {
           .toList(),
       highestStreak: jsonSerialization['highestStreak'] as int?,
       picture: jsonSerialization['picture'] as String?,
+      hasPassedOnboarding: jsonSerialization['hasPassedOnboarding'] as bool?,
     );
   }
 
@@ -69,6 +72,8 @@ abstract class User implements _i1.SerializableModel {
 
   String? picture;
 
+  bool? hasPassedOnboarding;
+
   User copyWith({
     int? id,
     int? userInfoId,
@@ -77,6 +82,7 @@ abstract class User implements _i1.SerializableModel {
     List<_i3.Goal>? goals,
     int? highestStreak,
     String? picture,
+    bool? hasPassedOnboarding,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -88,6 +94,8 @@ abstract class User implements _i1.SerializableModel {
       if (goals != null) 'goals': goals?.toJson(valueToJson: (v) => v.toJson()),
       if (highestStreak != null) 'highestStreak': highestStreak,
       if (picture != null) 'picture': picture,
+      if (hasPassedOnboarding != null)
+        'hasPassedOnboarding': hasPassedOnboarding,
     };
   }
 
@@ -108,6 +116,7 @@ class _UserImpl extends User {
     List<_i3.Goal>? goals,
     int? highestStreak,
     String? picture,
+    bool? hasPassedOnboarding,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -116,6 +125,7 @@ class _UserImpl extends User {
           goals: goals,
           highestStreak: highestStreak,
           picture: picture,
+          hasPassedOnboarding: hasPassedOnboarding,
         );
 
   @override
@@ -127,6 +137,7 @@ class _UserImpl extends User {
     Object? goals = _Undefined,
     Object? highestStreak = _Undefined,
     Object? picture = _Undefined,
+    Object? hasPassedOnboarding = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -137,6 +148,9 @@ class _UserImpl extends User {
       goals: goals is List<_i3.Goal>? ? goals : this.goals?.clone(),
       highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
       picture: picture is String? ? picture : this.picture,
+      hasPassedOnboarding: hasPassedOnboarding is bool?
+          ? hasPassedOnboarding
+          : this.hasPassedOnboarding,
     );
   }
 }

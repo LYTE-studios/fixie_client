@@ -269,6 +269,12 @@ class EndpointProfile extends _i1.EndpointRef {
         {'name': name},
       );
 
+  _i2.Future<void> completeOnboarding() => caller.callServerEndpoint<void>(
+        'profile',
+        'completeOnboarding',
+        {},
+      );
+
   _i2.Future<Map<String, String?>> getImageUploadDescription(
           {required String fileName}) =>
       caller.callServerEndpoint<Map<String, String?>>(
