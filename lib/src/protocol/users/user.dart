@@ -22,6 +22,7 @@ abstract class User implements _i1.SerializableModel {
     this.highestStreak,
     this.picture,
     this.hasPassedOnboarding,
+    this.fcmToken,
   });
 
   factory User({
@@ -33,6 +34,7 @@ abstract class User implements _i1.SerializableModel {
     int? highestStreak,
     String? picture,
     bool? hasPassedOnboarding,
+    String? fcmToken,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -52,6 +54,7 @@ abstract class User implements _i1.SerializableModel {
       highestStreak: jsonSerialization['highestStreak'] as int?,
       picture: jsonSerialization['picture'] as String?,
       hasPassedOnboarding: jsonSerialization['hasPassedOnboarding'] as bool?,
+      fcmToken: jsonSerialization['fcmToken'] as String?,
     );
   }
 
@@ -74,6 +77,8 @@ abstract class User implements _i1.SerializableModel {
 
   bool? hasPassedOnboarding;
 
+  String? fcmToken;
+
   User copyWith({
     int? id,
     int? userInfoId,
@@ -83,6 +88,7 @@ abstract class User implements _i1.SerializableModel {
     int? highestStreak,
     String? picture,
     bool? hasPassedOnboarding,
+    String? fcmToken,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -96,6 +102,7 @@ abstract class User implements _i1.SerializableModel {
       if (picture != null) 'picture': picture,
       if (hasPassedOnboarding != null)
         'hasPassedOnboarding': hasPassedOnboarding,
+      if (fcmToken != null) 'fcmToken': fcmToken,
     };
   }
 
@@ -117,6 +124,7 @@ class _UserImpl extends User {
     int? highestStreak,
     String? picture,
     bool? hasPassedOnboarding,
+    String? fcmToken,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -126,6 +134,7 @@ class _UserImpl extends User {
           highestStreak: highestStreak,
           picture: picture,
           hasPassedOnboarding: hasPassedOnboarding,
+          fcmToken: fcmToken,
         );
 
   @override
@@ -138,6 +147,7 @@ class _UserImpl extends User {
     Object? highestStreak = _Undefined,
     Object? picture = _Undefined,
     Object? hasPassedOnboarding = _Undefined,
+    Object? fcmToken = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -151,6 +161,7 @@ class _UserImpl extends User {
       hasPassedOnboarding: hasPassedOnboarding is bool?
           ? hasPassedOnboarding
           : this.hasPassedOnboarding,
+      fcmToken: fcmToken is String? ? fcmToken : this.fcmToken,
     );
   }
 }
