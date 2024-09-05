@@ -224,6 +224,22 @@ class EndpointJournal extends _i1.EndpointRef {
 }
 
 /// {@category Endpoint}
+class EndpointNotification extends _i1.EndpointRef {
+  EndpointNotification(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'notification';
+
+  /// Sets the FCM token for user messaging
+  _i2.Future<void> setFcmToken({required String token}) =>
+      caller.callServerEndpoint<void>(
+        'notification',
+        'setFcmToken',
+        {'token': token},
+      );
+}
+
+/// {@category Endpoint}
 class EndpointProfile extends _i1.EndpointRef {
   EndpointProfile(_i1.EndpointCaller caller) : super(caller);
 
@@ -362,6 +378,7 @@ class Client extends _i1.ServerpodClient {
     file = EndpointFile(this);
     goals = EndpointGoals(this);
     journal = EndpointJournal(this);
+    notification = EndpointNotification(this);
     profile = EndpointProfile(this);
     statistics = EndpointStatistics(this);
     modules = _Modules(this);
@@ -375,6 +392,8 @@ class Client extends _i1.ServerpodClient {
 
   late final EndpointJournal journal;
 
+  late final EndpointNotification notification;
+
   late final EndpointProfile profile;
 
   late final EndpointStatistics statistics;
@@ -387,6 +406,7 @@ class Client extends _i1.ServerpodClient {
         'file': file,
         'goals': goals,
         'journal': journal,
+        'notification': notification,
         'profile': profile,
         'statistics': statistics,
       };
