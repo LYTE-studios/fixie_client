@@ -24,7 +24,6 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     this.remindHour,
     this.remindMinutes,
     this.remindHalf,
-    this.remindTimezone,
   });
 
   factory CreateGoalDto({
@@ -39,7 +38,6 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     int? remindHour,
     int? remindMinutes,
     bool? remindHalf,
-    String? remindTimezone,
   }) = _CreateGoalDtoImpl;
 
   factory CreateGoalDto.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -62,7 +60,6 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
       remindHour: jsonSerialization['remindHour'] as int?,
       remindMinutes: jsonSerialization['remindMinutes'] as int?,
       remindHalf: jsonSerialization['remindHalf'] as bool?,
-      remindTimezone: jsonSerialization['remindTimezone'] as String?,
     );
   }
 
@@ -88,8 +85,6 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
 
   bool? remindHalf;
 
-  String? remindTimezone;
-
   CreateGoalDto copyWith({
     String? title,
     String? picture,
@@ -102,7 +97,6 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     int? remindHour,
     int? remindMinutes,
     bool? remindHalf,
-    String? remindTimezone,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -118,7 +112,6 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
       if (remindHour != null) 'remindHour': remindHour,
       if (remindMinutes != null) 'remindMinutes': remindMinutes,
       if (remindHalf != null) 'remindHalf': remindHalf,
-      if (remindTimezone != null) 'remindTimezone': remindTimezone,
     };
   }
 
@@ -143,7 +136,6 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
     int? remindHour,
     int? remindMinutes,
     bool? remindHalf,
-    String? remindTimezone,
   }) : super._(
           title: title,
           picture: picture,
@@ -156,7 +148,6 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
           remindHour: remindHour,
           remindMinutes: remindMinutes,
           remindHalf: remindHalf,
-          remindTimezone: remindTimezone,
         );
 
   @override
@@ -172,7 +163,6 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
     Object? remindHour = _Undefined,
     Object? remindMinutes = _Undefined,
     Object? remindHalf = _Undefined,
-    Object? remindTimezone = _Undefined,
   }) {
     return CreateGoalDto(
       title: title ?? this.title,
@@ -187,8 +177,6 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
       remindHour: remindHour is int? ? remindHour : this.remindHour,
       remindMinutes: remindMinutes is int? ? remindMinutes : this.remindMinutes,
       remindHalf: remindHalf is bool? ? remindHalf : this.remindHalf,
-      remindTimezone:
-          remindTimezone is String? ? remindTimezone : this.remindTimezone,
     );
   }
 }
