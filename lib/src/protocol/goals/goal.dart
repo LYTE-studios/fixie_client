@@ -22,14 +22,12 @@ abstract class Goal implements _i1.SerializableModel {
     this.unit,
     required this.categoryId,
     this.category,
-    this.days,
+    this.repetition,
+    this.repeatEvery,
+    this.weekdays,
     this.end,
-    required this.setRemind,
-    this.remindHour,
-    this.remindMinutes,
-    this.remindHalf,
+    this.reminders,
     this.journal,
-    this.currentStreak,
     this.highestStreak,
     required this.active,
     required this.archived,
@@ -46,14 +44,12 @@ abstract class Goal implements _i1.SerializableModel {
     String? unit,
     required int categoryId,
     _i2.Category? category,
-    List<_i2.RepeatableDays>? days,
+    _i2.Repetition? repetition,
+    int? repeatEvery,
+    List<int>? weekdays,
     DateTime? end,
-    required bool setRemind,
-    int? remindHour,
-    int? remindMinutes,
-    bool? remindHalf,
+    List<DateTime>? reminders,
     List<_i2.JournalLog>? journal,
-    int? currentStreak,
     int? highestStreak,
     required bool active,
     required bool archived,
@@ -77,20 +73,22 @@ abstract class Goal implements _i1.SerializableModel {
           ? null
           : _i2.Category.fromJson(
               (jsonSerialization['category'] as Map<String, dynamic>)),
-      days: (jsonSerialization['days'] as List?)
-          ?.map((e) => _i2.RepeatableDays.fromJson((e as Map<String, dynamic>)))
+      repetition: jsonSerialization['repetition'] == null
+          ? null
+          : _i2.Repetition.fromJson((jsonSerialization['repetition'] as int)),
+      repeatEvery: jsonSerialization['repeatEvery'] as int?,
+      weekdays: (jsonSerialization['weekdays'] as List?)
+          ?.map((e) => e as int)
           .toList(),
       end: jsonSerialization['end'] == null
           ? null
           : _i1.DateTimeJsonExtension.fromJson(jsonSerialization['end']),
-      setRemind: jsonSerialization['setRemind'] as bool,
-      remindHour: jsonSerialization['remindHour'] as int?,
-      remindMinutes: jsonSerialization['remindMinutes'] as int?,
-      remindHalf: jsonSerialization['remindHalf'] as bool?,
+      reminders: (jsonSerialization['reminders'] as List?)
+          ?.map((e) => _i1.DateTimeJsonExtension.fromJson(e))
+          .toList(),
       journal: (jsonSerialization['journal'] as List?)
           ?.map((e) => _i2.JournalLog.fromJson((e as Map<String, dynamic>)))
           .toList(),
-      currentStreak: jsonSerialization['currentStreak'] as int?,
       highestStreak: jsonSerialization['highestStreak'] as int?,
       active: jsonSerialization['active'] as bool,
       archived: jsonSerialization['archived'] as bool,
@@ -121,21 +119,17 @@ abstract class Goal implements _i1.SerializableModel {
 
   _i2.Category? category;
 
-  List<_i2.RepeatableDays>? days;
+  _i2.Repetition? repetition;
+
+  int? repeatEvery;
+
+  List<int>? weekdays;
 
   DateTime? end;
 
-  bool setRemind;
-
-  int? remindHour;
-
-  int? remindMinutes;
-
-  bool? remindHalf;
+  List<DateTime>? reminders;
 
   List<_i2.JournalLog>? journal;
-
-  int? currentStreak;
 
   int? highestStreak;
 
@@ -155,14 +149,12 @@ abstract class Goal implements _i1.SerializableModel {
     String? unit,
     int? categoryId,
     _i2.Category? category,
-    List<_i2.RepeatableDays>? days,
+    _i2.Repetition? repetition,
+    int? repeatEvery,
+    List<int>? weekdays,
     DateTime? end,
-    bool? setRemind,
-    int? remindHour,
-    int? remindMinutes,
-    bool? remindHalf,
+    List<DateTime>? reminders,
     List<_i2.JournalLog>? journal,
-    int? currentStreak,
     int? highestStreak,
     bool? active,
     bool? archived,
@@ -180,15 +172,14 @@ abstract class Goal implements _i1.SerializableModel {
       if (unit != null) 'unit': unit,
       'categoryId': categoryId,
       if (category != null) 'category': category?.toJson(),
-      if (days != null) 'days': days?.toJson(valueToJson: (v) => v.toJson()),
+      if (repetition != null) 'repetition': repetition?.toJson(),
+      if (repeatEvery != null) 'repeatEvery': repeatEvery,
+      if (weekdays != null) 'weekdays': weekdays?.toJson(),
       if (end != null) 'end': end?.toJson(),
-      'setRemind': setRemind,
-      if (remindHour != null) 'remindHour': remindHour,
-      if (remindMinutes != null) 'remindMinutes': remindMinutes,
-      if (remindHalf != null) 'remindHalf': remindHalf,
+      if (reminders != null)
+        'reminders': reminders?.toJson(valueToJson: (v) => v.toJson()),
       if (journal != null)
         'journal': journal?.toJson(valueToJson: (v) => v.toJson()),
-      if (currentStreak != null) 'currentStreak': currentStreak,
       if (highestStreak != null) 'highestStreak': highestStreak,
       'active': active,
       'archived': archived,
@@ -215,14 +206,12 @@ class _GoalImpl extends Goal {
     String? unit,
     required int categoryId,
     _i2.Category? category,
-    List<_i2.RepeatableDays>? days,
+    _i2.Repetition? repetition,
+    int? repeatEvery,
+    List<int>? weekdays,
     DateTime? end,
-    required bool setRemind,
-    int? remindHour,
-    int? remindMinutes,
-    bool? remindHalf,
+    List<DateTime>? reminders,
     List<_i2.JournalLog>? journal,
-    int? currentStreak,
     int? highestStreak,
     required bool active,
     required bool archived,
@@ -237,14 +226,12 @@ class _GoalImpl extends Goal {
           unit: unit,
           categoryId: categoryId,
           category: category,
-          days: days,
+          repetition: repetition,
+          repeatEvery: repeatEvery,
+          weekdays: weekdays,
           end: end,
-          setRemind: setRemind,
-          remindHour: remindHour,
-          remindMinutes: remindMinutes,
-          remindHalf: remindHalf,
+          reminders: reminders,
           journal: journal,
-          currentStreak: currentStreak,
           highestStreak: highestStreak,
           active: active,
           archived: archived,
@@ -262,14 +249,12 @@ class _GoalImpl extends Goal {
     Object? unit = _Undefined,
     int? categoryId,
     Object? category = _Undefined,
-    Object? days = _Undefined,
+    Object? repetition = _Undefined,
+    Object? repeatEvery = _Undefined,
+    Object? weekdays = _Undefined,
     Object? end = _Undefined,
-    bool? setRemind,
-    Object? remindHour = _Undefined,
-    Object? remindMinutes = _Undefined,
-    Object? remindHalf = _Undefined,
+    Object? reminders = _Undefined,
     Object? journal = _Undefined,
-    Object? currentStreak = _Undefined,
     Object? highestStreak = _Undefined,
     bool? active,
     bool? archived,
@@ -286,15 +271,14 @@ class _GoalImpl extends Goal {
       categoryId: categoryId ?? this.categoryId,
       category:
           category is _i2.Category? ? category : this.category?.copyWith(),
-      days: days is List<_i2.RepeatableDays>? ? days : this.days?.clone(),
+      repetition: repetition is _i2.Repetition? ? repetition : this.repetition,
+      repeatEvery: repeatEvery is int? ? repeatEvery : this.repeatEvery,
+      weekdays: weekdays is List<int>? ? weekdays : this.weekdays?.clone(),
       end: end is DateTime? ? end : this.end,
-      setRemind: setRemind ?? this.setRemind,
-      remindHour: remindHour is int? ? remindHour : this.remindHour,
-      remindMinutes: remindMinutes is int? ? remindMinutes : this.remindMinutes,
-      remindHalf: remindHalf is bool? ? remindHalf : this.remindHalf,
+      reminders:
+          reminders is List<DateTime>? ? reminders : this.reminders?.clone(),
       journal:
           journal is List<_i2.JournalLog>? ? journal : this.journal?.clone(),
-      currentStreak: currentStreak is int? ? currentStreak : this.currentStreak,
       highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
       active: active ?? this.active,
       archived: archived ?? this.archived,

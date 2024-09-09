@@ -18,12 +18,11 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     required this.target,
     this.unit,
     this.category,
-    this.days,
+    this.repetition,
+    this.repeatEvery,
+    this.weekdays,
     this.end,
-    required this.setRemind,
-    this.remindHour,
-    this.remindMinutes,
-    this.remindHalf,
+    this.reminders,
   });
 
   factory CreateGoalDto({
@@ -32,12 +31,11 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     required int target,
     String? unit,
     _i2.Category? category,
-    List<_i2.RepeatableDays>? days,
+    _i2.Repetition? repetition,
+    int? repeatEvery,
+    List<int>? weekdays,
     DateTime? end,
-    required bool setRemind,
-    int? remindHour,
-    int? remindMinutes,
-    bool? remindHalf,
+    List<DateTime>? reminders,
   }) = _CreateGoalDtoImpl;
 
   factory CreateGoalDto.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -50,16 +48,19 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
           ? null
           : _i2.Category.fromJson(
               (jsonSerialization['category'] as Map<String, dynamic>)),
-      days: (jsonSerialization['days'] as List?)
-          ?.map((e) => _i2.RepeatableDays.fromJson((e as Map<String, dynamic>)))
+      repetition: jsonSerialization['repetition'] == null
+          ? null
+          : _i2.Repetition.fromJson((jsonSerialization['repetition'] as int)),
+      repeatEvery: jsonSerialization['repeatEvery'] as int?,
+      weekdays: (jsonSerialization['weekdays'] as List?)
+          ?.map((e) => e as int)
           .toList(),
       end: jsonSerialization['end'] == null
           ? null
           : _i1.DateTimeJsonExtension.fromJson(jsonSerialization['end']),
-      setRemind: jsonSerialization['setRemind'] as bool,
-      remindHour: jsonSerialization['remindHour'] as int?,
-      remindMinutes: jsonSerialization['remindMinutes'] as int?,
-      remindHalf: jsonSerialization['remindHalf'] as bool?,
+      reminders: (jsonSerialization['reminders'] as List?)
+          ?.map((e) => _i1.DateTimeJsonExtension.fromJson(e))
+          .toList(),
     );
   }
 
@@ -73,17 +74,15 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
 
   _i2.Category? category;
 
-  List<_i2.RepeatableDays>? days;
+  _i2.Repetition? repetition;
+
+  int? repeatEvery;
+
+  List<int>? weekdays;
 
   DateTime? end;
 
-  bool setRemind;
-
-  int? remindHour;
-
-  int? remindMinutes;
-
-  bool? remindHalf;
+  List<DateTime>? reminders;
 
   CreateGoalDto copyWith({
     String? title,
@@ -91,12 +90,11 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     int? target,
     String? unit,
     _i2.Category? category,
-    List<_i2.RepeatableDays>? days,
+    _i2.Repetition? repetition,
+    int? repeatEvery,
+    List<int>? weekdays,
     DateTime? end,
-    bool? setRemind,
-    int? remindHour,
-    int? remindMinutes,
-    bool? remindHalf,
+    List<DateTime>? reminders,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -106,12 +104,12 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
       'target': target,
       if (unit != null) 'unit': unit,
       if (category != null) 'category': category?.toJson(),
-      if (days != null) 'days': days?.toJson(valueToJson: (v) => v.toJson()),
+      if (repetition != null) 'repetition': repetition?.toJson(),
+      if (repeatEvery != null) 'repeatEvery': repeatEvery,
+      if (weekdays != null) 'weekdays': weekdays?.toJson(),
       if (end != null) 'end': end?.toJson(),
-      'setRemind': setRemind,
-      if (remindHour != null) 'remindHour': remindHour,
-      if (remindMinutes != null) 'remindMinutes': remindMinutes,
-      if (remindHalf != null) 'remindHalf': remindHalf,
+      if (reminders != null)
+        'reminders': reminders?.toJson(valueToJson: (v) => v.toJson()),
     };
   }
 
@@ -130,24 +128,22 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
     required int target,
     String? unit,
     _i2.Category? category,
-    List<_i2.RepeatableDays>? days,
+    _i2.Repetition? repetition,
+    int? repeatEvery,
+    List<int>? weekdays,
     DateTime? end,
-    required bool setRemind,
-    int? remindHour,
-    int? remindMinutes,
-    bool? remindHalf,
+    List<DateTime>? reminders,
   }) : super._(
           title: title,
           picture: picture,
           target: target,
           unit: unit,
           category: category,
-          days: days,
+          repetition: repetition,
+          repeatEvery: repeatEvery,
+          weekdays: weekdays,
           end: end,
-          setRemind: setRemind,
-          remindHour: remindHour,
-          remindMinutes: remindMinutes,
-          remindHalf: remindHalf,
+          reminders: reminders,
         );
 
   @override
@@ -157,12 +153,11 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
     int? target,
     Object? unit = _Undefined,
     Object? category = _Undefined,
-    Object? days = _Undefined,
+    Object? repetition = _Undefined,
+    Object? repeatEvery = _Undefined,
+    Object? weekdays = _Undefined,
     Object? end = _Undefined,
-    bool? setRemind,
-    Object? remindHour = _Undefined,
-    Object? remindMinutes = _Undefined,
-    Object? remindHalf = _Undefined,
+    Object? reminders = _Undefined,
   }) {
     return CreateGoalDto(
       title: title ?? this.title,
@@ -171,12 +166,12 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
       unit: unit is String? ? unit : this.unit,
       category:
           category is _i2.Category? ? category : this.category?.copyWith(),
-      days: days is List<_i2.RepeatableDays>? ? days : this.days?.clone(),
+      repetition: repetition is _i2.Repetition? ? repetition : this.repetition,
+      repeatEvery: repeatEvery is int? ? repeatEvery : this.repeatEvery,
+      weekdays: weekdays is List<int>? ? weekdays : this.weekdays?.clone(),
       end: end is DateTime? ? end : this.end,
-      setRemind: setRemind ?? this.setRemind,
-      remindHour: remindHour is int? ? remindHour : this.remindHour,
-      remindMinutes: remindMinutes is int? ? remindMinutes : this.remindMinutes,
-      remindHalf: remindHalf is bool? ? remindHalf : this.remindHalf,
+      reminders:
+          reminders is List<DateTime>? ? reminders : this.reminders?.clone(),
     );
   }
 }
