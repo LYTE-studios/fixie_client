@@ -16,9 +16,10 @@ abstract class JournalLog implements _i1.SerializableModel {
     this.id,
     required this.goalId,
     this.goal,
-    required this.text,
     this.picture,
+    required this.note,
     this.loggedValue,
+    this.registrationLog,
     required this.createdAt,
     required this.modifiedAt,
     required this.date,
@@ -29,9 +30,10 @@ abstract class JournalLog implements _i1.SerializableModel {
     int? id,
     required int goalId,
     _i2.Goal? goal,
-    required String text,
-    String? picture,
+    List<String>? picture,
+    required String note,
     double? loggedValue,
+    List<_i2.RegistrationLog>? registrationLog,
     required DateTime createdAt,
     required DateTime modifiedAt,
     required DateTime date,
@@ -46,9 +48,15 @@ abstract class JournalLog implements _i1.SerializableModel {
           ? null
           : _i2.Goal.fromJson(
               (jsonSerialization['goal'] as Map<String, dynamic>)),
-      text: jsonSerialization['text'] as String,
-      picture: jsonSerialization['picture'] as String?,
+      picture: (jsonSerialization['picture'] as List?)
+          ?.map((e) => e as String)
+          .toList(),
+      note: jsonSerialization['note'] as String,
       loggedValue: (jsonSerialization['loggedValue'] as num?)?.toDouble(),
+      registrationLog: (jsonSerialization['registrationLog'] as List?)
+          ?.map(
+              (e) => _i2.RegistrationLog.fromJson((e as Map<String, dynamic>)))
+          .toList(),
       createdAt:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
       modifiedAt:
@@ -67,11 +75,13 @@ abstract class JournalLog implements _i1.SerializableModel {
 
   _i2.Goal? goal;
 
-  String text;
+  List<String>? picture;
 
-  String? picture;
+  String note;
 
   double? loggedValue;
+
+  List<_i2.RegistrationLog>? registrationLog;
 
   DateTime createdAt;
 
@@ -85,9 +95,10 @@ abstract class JournalLog implements _i1.SerializableModel {
     int? id,
     int? goalId,
     _i2.Goal? goal,
-    String? text,
-    String? picture,
+    List<String>? picture,
+    String? note,
     double? loggedValue,
+    List<_i2.RegistrationLog>? registrationLog,
     DateTime? createdAt,
     DateTime? modifiedAt,
     DateTime? date,
@@ -99,9 +110,12 @@ abstract class JournalLog implements _i1.SerializableModel {
       if (id != null) 'id': id,
       'goalId': goalId,
       if (goal != null) 'goal': goal?.toJson(),
-      'text': text,
-      if (picture != null) 'picture': picture,
+      if (picture != null) 'picture': picture?.toJson(),
+      'note': note,
       if (loggedValue != null) 'loggedValue': loggedValue,
+      if (registrationLog != null)
+        'registrationLog':
+            registrationLog?.toJson(valueToJson: (v) => v.toJson()),
       'createdAt': createdAt.toJson(),
       'modifiedAt': modifiedAt.toJson(),
       'date': date.toJson(),
@@ -122,9 +136,10 @@ class _JournalLogImpl extends JournalLog {
     int? id,
     required int goalId,
     _i2.Goal? goal,
-    required String text,
-    String? picture,
+    List<String>? picture,
+    required String note,
     double? loggedValue,
+    List<_i2.RegistrationLog>? registrationLog,
     required DateTime createdAt,
     required DateTime modifiedAt,
     required DateTime date,
@@ -133,9 +148,10 @@ class _JournalLogImpl extends JournalLog {
           id: id,
           goalId: goalId,
           goal: goal,
-          text: text,
           picture: picture,
+          note: note,
           loggedValue: loggedValue,
+          registrationLog: registrationLog,
           createdAt: createdAt,
           modifiedAt: modifiedAt,
           date: date,
@@ -147,9 +163,10 @@ class _JournalLogImpl extends JournalLog {
     Object? id = _Undefined,
     int? goalId,
     Object? goal = _Undefined,
-    String? text,
     Object? picture = _Undefined,
+    String? note,
     Object? loggedValue = _Undefined,
+    Object? registrationLog = _Undefined,
     DateTime? createdAt,
     DateTime? modifiedAt,
     DateTime? date,
@@ -159,9 +176,12 @@ class _JournalLogImpl extends JournalLog {
       id: id is int? ? id : this.id,
       goalId: goalId ?? this.goalId,
       goal: goal is _i2.Goal? ? goal : this.goal?.copyWith(),
-      text: text ?? this.text,
-      picture: picture is String? ? picture : this.picture,
+      picture: picture is List<String>? ? picture : this.picture?.clone(),
+      note: note ?? this.note,
       loggedValue: loggedValue is double? ? loggedValue : this.loggedValue,
+      registrationLog: registrationLog is List<_i2.RegistrationLog>?
+          ? registrationLog
+          : this.registrationLog?.clone(),
       createdAt: createdAt ?? this.createdAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
       date: date ?? this.date,
