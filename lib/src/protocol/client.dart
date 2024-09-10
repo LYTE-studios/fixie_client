@@ -279,6 +279,12 @@ class EndpointProfile extends _i1.EndpointRef {
         {},
       );
 
+  _i2.Future<void> completeGoalTutorial() => caller.callServerEndpoint<void>(
+        'profile',
+        'completeGoalTutorial',
+        {},
+      );
+
   _i2.Future<Map<String, String?>> getImageUploadDescription(
           {required String fileName}) =>
       caller.callServerEndpoint<Map<String, String?>>(

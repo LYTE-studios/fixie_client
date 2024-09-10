@@ -23,6 +23,7 @@ abstract class User implements _i1.SerializableModel {
     this.picture,
     this.hasPassedOnboarding,
     this.fcmToken,
+    this.hasPassedGoalTutorial,
   });
 
   factory User({
@@ -35,6 +36,7 @@ abstract class User implements _i1.SerializableModel {
     String? picture,
     bool? hasPassedOnboarding,
     String? fcmToken,
+    bool? hasPassedGoalTutorial,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -55,6 +57,8 @@ abstract class User implements _i1.SerializableModel {
       picture: jsonSerialization['picture'] as String?,
       hasPassedOnboarding: jsonSerialization['hasPassedOnboarding'] as bool?,
       fcmToken: jsonSerialization['fcmToken'] as String?,
+      hasPassedGoalTutorial:
+          jsonSerialization['hasPassedGoalTutorial'] as bool?,
     );
   }
 
@@ -79,6 +83,8 @@ abstract class User implements _i1.SerializableModel {
 
   String? fcmToken;
 
+  bool? hasPassedGoalTutorial;
+
   User copyWith({
     int? id,
     int? userInfoId,
@@ -89,6 +95,7 @@ abstract class User implements _i1.SerializableModel {
     String? picture,
     bool? hasPassedOnboarding,
     String? fcmToken,
+    bool? hasPassedGoalTutorial,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -103,6 +110,8 @@ abstract class User implements _i1.SerializableModel {
       if (hasPassedOnboarding != null)
         'hasPassedOnboarding': hasPassedOnboarding,
       if (fcmToken != null) 'fcmToken': fcmToken,
+      if (hasPassedGoalTutorial != null)
+        'hasPassedGoalTutorial': hasPassedGoalTutorial,
     };
   }
 
@@ -125,6 +134,7 @@ class _UserImpl extends User {
     String? picture,
     bool? hasPassedOnboarding,
     String? fcmToken,
+    bool? hasPassedGoalTutorial,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -135,6 +145,7 @@ class _UserImpl extends User {
           picture: picture,
           hasPassedOnboarding: hasPassedOnboarding,
           fcmToken: fcmToken,
+          hasPassedGoalTutorial: hasPassedGoalTutorial,
         );
 
   @override
@@ -148,6 +159,7 @@ class _UserImpl extends User {
     Object? picture = _Undefined,
     Object? hasPassedOnboarding = _Undefined,
     Object? fcmToken = _Undefined,
+    Object? hasPassedGoalTutorial = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -162,6 +174,9 @@ class _UserImpl extends User {
           ? hasPassedOnboarding
           : this.hasPassedOnboarding,
       fcmToken: fcmToken is String? ? fcmToken : this.fcmToken,
+      hasPassedGoalTutorial: hasPassedGoalTutorial is bool?
+          ? hasPassedGoalTutorial
+          : this.hasPassedGoalTutorial,
     );
   }
 }
