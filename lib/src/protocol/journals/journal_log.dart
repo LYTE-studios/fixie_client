@@ -24,6 +24,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     required this.modifiedAt,
     required this.date,
     this.streak,
+    this.currentStreak,
   });
 
   factory JournalLog({
@@ -38,6 +39,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     required DateTime modifiedAt,
     required DateTime date,
     bool? streak,
+    int? currentStreak,
   }) = _JournalLogImpl;
 
   factory JournalLog.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -63,6 +65,7 @@ abstract class JournalLog implements _i1.SerializableModel {
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['modifiedAt']),
       date: _i1.DateTimeJsonExtension.fromJson(jsonSerialization['date']),
       streak: jsonSerialization['streak'] as bool?,
+      currentStreak: jsonSerialization['currentStreak'] as int?,
     );
   }
 
@@ -91,6 +94,8 @@ abstract class JournalLog implements _i1.SerializableModel {
 
   bool? streak;
 
+  int? currentStreak;
+
   JournalLog copyWith({
     int? id,
     int? goalId,
@@ -103,6 +108,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     DateTime? modifiedAt,
     DateTime? date,
     bool? streak,
+    int? currentStreak,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -120,6 +126,7 @@ abstract class JournalLog implements _i1.SerializableModel {
       'modifiedAt': modifiedAt.toJson(),
       'date': date.toJson(),
       if (streak != null) 'streak': streak,
+      if (currentStreak != null) 'currentStreak': currentStreak,
     };
   }
 
@@ -144,6 +151,7 @@ class _JournalLogImpl extends JournalLog {
     required DateTime modifiedAt,
     required DateTime date,
     bool? streak,
+    int? currentStreak,
   }) : super._(
           id: id,
           goalId: goalId,
@@ -156,6 +164,7 @@ class _JournalLogImpl extends JournalLog {
           modifiedAt: modifiedAt,
           date: date,
           streak: streak,
+          currentStreak: currentStreak,
         );
 
   @override
@@ -171,6 +180,7 @@ class _JournalLogImpl extends JournalLog {
     DateTime? modifiedAt,
     DateTime? date,
     Object? streak = _Undefined,
+    Object? currentStreak = _Undefined,
   }) {
     return JournalLog(
       id: id is int? ? id : this.id,
@@ -186,6 +196,7 @@ class _JournalLogImpl extends JournalLog {
       modifiedAt: modifiedAt ?? this.modifiedAt,
       date: date ?? this.date,
       streak: streak is bool? ? streak : this.streak,
+      currentStreak: currentStreak is int? ? currentStreak : this.currentStreak,
     );
   }
 }
