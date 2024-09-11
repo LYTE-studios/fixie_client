@@ -19,6 +19,8 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     this.picture,
     required this.hasPassedOnboarding,
     required this.hasPassedGoalTutorial,
+    this.informationCollectionSetting,
+    this.automaticRemindersSetting,
   });
 
   factory UserProfileDto({
@@ -29,6 +31,8 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     String? picture,
     required bool hasPassedOnboarding,
     required bool hasPassedGoalTutorial,
+    bool? informationCollectionSetting,
+    bool? automaticRemindersSetting,
   }) = _UserProfileDtoImpl;
 
   factory UserProfileDto.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -42,6 +46,10 @@ abstract class UserProfileDto implements _i1.SerializableModel {
       picture: jsonSerialization['picture'] as String?,
       hasPassedOnboarding: jsonSerialization['hasPassedOnboarding'] as bool,
       hasPassedGoalTutorial: jsonSerialization['hasPassedGoalTutorial'] as bool,
+      informationCollectionSetting:
+          jsonSerialization['informationCollectionSetting'] as bool?,
+      automaticRemindersSetting:
+          jsonSerialization['automaticRemindersSetting'] as bool?,
     );
   }
 
@@ -59,6 +67,10 @@ abstract class UserProfileDto implements _i1.SerializableModel {
 
   bool hasPassedGoalTutorial;
 
+  bool? informationCollectionSetting;
+
+  bool? automaticRemindersSetting;
+
   UserProfileDto copyWith({
     String? name,
     DateTime? birthday,
@@ -67,6 +79,8 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     String? picture,
     bool? hasPassedOnboarding,
     bool? hasPassedGoalTutorial,
+    bool? informationCollectionSetting,
+    bool? automaticRemindersSetting,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -78,6 +92,10 @@ abstract class UserProfileDto implements _i1.SerializableModel {
       if (picture != null) 'picture': picture,
       'hasPassedOnboarding': hasPassedOnboarding,
       'hasPassedGoalTutorial': hasPassedGoalTutorial,
+      if (informationCollectionSetting != null)
+        'informationCollectionSetting': informationCollectionSetting,
+      if (automaticRemindersSetting != null)
+        'automaticRemindersSetting': automaticRemindersSetting,
     };
   }
 
@@ -98,6 +116,8 @@ class _UserProfileDtoImpl extends UserProfileDto {
     String? picture,
     required bool hasPassedOnboarding,
     required bool hasPassedGoalTutorial,
+    bool? informationCollectionSetting,
+    bool? automaticRemindersSetting,
   }) : super._(
           name: name,
           birthday: birthday,
@@ -106,6 +126,8 @@ class _UserProfileDtoImpl extends UserProfileDto {
           picture: picture,
           hasPassedOnboarding: hasPassedOnboarding,
           hasPassedGoalTutorial: hasPassedGoalTutorial,
+          informationCollectionSetting: informationCollectionSetting,
+          automaticRemindersSetting: automaticRemindersSetting,
         );
 
   @override
@@ -117,6 +139,8 @@ class _UserProfileDtoImpl extends UserProfileDto {
     Object? picture = _Undefined,
     bool? hasPassedOnboarding,
     bool? hasPassedGoalTutorial,
+    Object? informationCollectionSetting = _Undefined,
+    Object? automaticRemindersSetting = _Undefined,
   }) {
     return UserProfileDto(
       name: name ?? this.name,
@@ -127,6 +151,12 @@ class _UserProfileDtoImpl extends UserProfileDto {
       hasPassedOnboarding: hasPassedOnboarding ?? this.hasPassedOnboarding,
       hasPassedGoalTutorial:
           hasPassedGoalTutorial ?? this.hasPassedGoalTutorial,
+      informationCollectionSetting: informationCollectionSetting is bool?
+          ? informationCollectionSetting
+          : this.informationCollectionSetting,
+      automaticRemindersSetting: automaticRemindersSetting is bool?
+          ? automaticRemindersSetting
+          : this.automaticRemindersSetting,
     );
   }
 }

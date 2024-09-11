@@ -24,6 +24,8 @@ abstract class User implements _i1.SerializableModel {
     this.hasPassedOnboarding,
     this.fcmToken,
     this.hasPassedGoalTutorial,
+    this.informationCollectionSetting,
+    this.automaticRemindersSetting,
   });
 
   factory User({
@@ -37,6 +39,8 @@ abstract class User implements _i1.SerializableModel {
     bool? hasPassedOnboarding,
     String? fcmToken,
     bool? hasPassedGoalTutorial,
+    bool? informationCollectionSetting,
+    bool? automaticRemindersSetting,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -59,6 +63,10 @@ abstract class User implements _i1.SerializableModel {
       fcmToken: jsonSerialization['fcmToken'] as String?,
       hasPassedGoalTutorial:
           jsonSerialization['hasPassedGoalTutorial'] as bool?,
+      informationCollectionSetting:
+          jsonSerialization['informationCollectionSetting'] as bool?,
+      automaticRemindersSetting:
+          jsonSerialization['automaticRemindersSetting'] as bool?,
     );
   }
 
@@ -85,6 +93,10 @@ abstract class User implements _i1.SerializableModel {
 
   bool? hasPassedGoalTutorial;
 
+  bool? informationCollectionSetting;
+
+  bool? automaticRemindersSetting;
+
   User copyWith({
     int? id,
     int? userInfoId,
@@ -96,6 +108,8 @@ abstract class User implements _i1.SerializableModel {
     bool? hasPassedOnboarding,
     String? fcmToken,
     bool? hasPassedGoalTutorial,
+    bool? informationCollectionSetting,
+    bool? automaticRemindersSetting,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -112,6 +126,10 @@ abstract class User implements _i1.SerializableModel {
       if (fcmToken != null) 'fcmToken': fcmToken,
       if (hasPassedGoalTutorial != null)
         'hasPassedGoalTutorial': hasPassedGoalTutorial,
+      if (informationCollectionSetting != null)
+        'informationCollectionSetting': informationCollectionSetting,
+      if (automaticRemindersSetting != null)
+        'automaticRemindersSetting': automaticRemindersSetting,
     };
   }
 
@@ -135,6 +153,8 @@ class _UserImpl extends User {
     bool? hasPassedOnboarding,
     String? fcmToken,
     bool? hasPassedGoalTutorial,
+    bool? informationCollectionSetting,
+    bool? automaticRemindersSetting,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -146,6 +166,8 @@ class _UserImpl extends User {
           hasPassedOnboarding: hasPassedOnboarding,
           fcmToken: fcmToken,
           hasPassedGoalTutorial: hasPassedGoalTutorial,
+          informationCollectionSetting: informationCollectionSetting,
+          automaticRemindersSetting: automaticRemindersSetting,
         );
 
   @override
@@ -160,6 +182,8 @@ class _UserImpl extends User {
     Object? hasPassedOnboarding = _Undefined,
     Object? fcmToken = _Undefined,
     Object? hasPassedGoalTutorial = _Undefined,
+    Object? informationCollectionSetting = _Undefined,
+    Object? automaticRemindersSetting = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -177,6 +201,12 @@ class _UserImpl extends User {
       hasPassedGoalTutorial: hasPassedGoalTutorial is bool?
           ? hasPassedGoalTutorial
           : this.hasPassedGoalTutorial,
+      informationCollectionSetting: informationCollectionSetting is bool?
+          ? informationCollectionSetting
+          : this.informationCollectionSetting,
+      automaticRemindersSetting: automaticRemindersSetting is bool?
+          ? automaticRemindersSetting
+          : this.automaticRemindersSetting,
     );
   }
 }
