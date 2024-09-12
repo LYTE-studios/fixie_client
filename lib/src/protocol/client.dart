@@ -196,11 +196,21 @@ class EndpointJournal extends _i1.EndpointRef {
         {'logId': logId},
       );
 
-  _i2.Future<List<_i7.JournalLog>?> getJournal(int? goalId) =>
+  _i2.Future<List<_i7.JournalLog>?> getJournal(
+    int? goalId, {
+    int? categoryId,
+    int? pageSize,
+    int? offset,
+  }) =>
       caller.callServerEndpoint<List<_i7.JournalLog>?>(
         'journal',
         'getJournal',
-        {'goalId': goalId},
+        {
+          'goalId': goalId,
+          'categoryId': categoryId,
+          'pageSize': pageSize,
+          'offset': offset,
+        },
       );
 
   _i2.Future<_i7.JournalLog> updateLog(_i7.JournalLog editedLog) =>
