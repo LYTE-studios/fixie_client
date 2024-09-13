@@ -21,8 +21,8 @@ import 'journals/journal_log.dart' as _i9;
 import 'journals/registration_log.dart' as _i10;
 import 'notifications/notification.dart' as _i11;
 import 'shared/repetition.dart' as _i12;
-import 'statistics/category_statistics.dart' as _i13;
-import 'statistics/goal_statistics.dart' as _i14;
+import 'statistics/goal_statistics.dart' as _i13;
+import 'statistics/statistics.dart' as _i14;
 import 'statistics/user_statistics.dart' as _i15;
 import 'users/user.dart' as _i16;
 import 'users/user_profile_dto.dart' as _i17;
@@ -42,8 +42,8 @@ export 'journals/journal_log.dart';
 export 'journals/registration_log.dart';
 export 'notifications/notification.dart';
 export 'shared/repetition.dart';
-export 'statistics/category_statistics.dart';
 export 'statistics/goal_statistics.dart';
+export 'statistics/statistics.dart';
 export 'statistics/user_statistics.dart';
 export 'users/user.dart';
 export 'users/user_profile_dto.dart';
@@ -95,11 +95,11 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i12.Repetition) {
       return _i12.Repetition.fromJson(data) as T;
     }
-    if (t == _i13.CategoryStatistics) {
-      return _i13.CategoryStatistics.fromJson(data) as T;
+    if (t == _i13.GoalStatistics) {
+      return _i13.GoalStatistics.fromJson(data) as T;
     }
-    if (t == _i14.GoalStatistics) {
-      return _i14.GoalStatistics.fromJson(data) as T;
+    if (t == _i14.Statistics) {
+      return _i14.Statistics.fromJson(data) as T;
     }
     if (t == _i15.UserStatistics) {
       return _i15.UserStatistics.fromJson(data) as T;
@@ -143,12 +143,11 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<_i12.Repetition?>()) {
       return (data != null ? _i12.Repetition.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i13.CategoryStatistics?>()) {
-      return (data != null ? _i13.CategoryStatistics.fromJson(data) : null)
-          as T;
+    if (t == _i1.getType<_i13.GoalStatistics?>()) {
+      return (data != null ? _i13.GoalStatistics.fromJson(data) : null) as T;
     }
-    if (t == _i1.getType<_i14.GoalStatistics?>()) {
-      return (data != null ? _i14.GoalStatistics.fromJson(data) : null) as T;
+    if (t == _i1.getType<_i14.Statistics?>()) {
+      return (data != null ? _i14.Statistics.fromJson(data) : null) as T;
     }
     if (t == _i1.getType<_i15.UserStatistics?>()) {
       return (data != null ? _i15.UserStatistics.fromJson(data) : null) as T;
@@ -204,12 +203,14 @@ class Protocol extends _i1.SerializationManager {
       return (data as List).map((e) => deserialize<String>(e)).toList()
           as dynamic;
     }
-    if (t == List<int>) {
-      return (data as List).map((e) => deserialize<int>(e)).toList() as dynamic;
-    }
     if (t == Map<DateTime, double?>) {
       return Map.fromEntries((data as List).map((e) => MapEntry(
               deserialize<DateTime>(e['k']), deserialize<double?>(e['v']))))
+          as dynamic;
+    }
+    if (t == Map<int, double>) {
+      return Map.fromEntries((data as List).map((e) =>
+              MapEntry(deserialize<int>(e['k']), deserialize<double>(e['v']))))
           as dynamic;
     }
     if (t == _i1.getType<List<_i18.Goal>?>()) {
@@ -281,11 +282,11 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i12.Repetition) {
       return 'Repetition';
     }
-    if (data is _i13.CategoryStatistics) {
-      return 'CategoryStatistics';
-    }
-    if (data is _i14.GoalStatistics) {
+    if (data is _i13.GoalStatistics) {
       return 'GoalStatistics';
+    }
+    if (data is _i14.Statistics) {
+      return 'Statistics';
     }
     if (data is _i15.UserStatistics) {
       return 'UserStatistics';
@@ -338,11 +339,11 @@ class Protocol extends _i1.SerializationManager {
     if (data['className'] == 'Repetition') {
       return deserialize<_i12.Repetition>(data['data']);
     }
-    if (data['className'] == 'CategoryStatistics') {
-      return deserialize<_i13.CategoryStatistics>(data['data']);
-    }
     if (data['className'] == 'GoalStatistics') {
-      return deserialize<_i14.GoalStatistics>(data['data']);
+      return deserialize<_i13.GoalStatistics>(data['data']);
+    }
+    if (data['className'] == 'Statistics') {
+      return deserialize<_i14.Statistics>(data['data']);
     }
     if (data['className'] == 'UserStatistics') {
       return deserialize<_i15.UserStatistics>(data['data']);

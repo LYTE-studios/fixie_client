@@ -22,8 +22,7 @@ import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i9;
 import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i10;
 import 'package:fixie_client/src/protocol/statistics/goal_statistics.dart'
     as _i11;
-import 'package:fixie_client/src/protocol/statistics/category_statistics.dart'
-    as _i12;
+import 'package:fixie_client/src/protocol/statistics/statistics.dart' as _i12;
 import 'protocol.dart' as _i13;
 
 /// {@category Endpoint}
@@ -344,18 +343,18 @@ class EndpointStatistics extends _i1.EndpointRef {
         {'goal': goal},
       );
 
-  _i2.Future<_i12.CategoryStatistics?> getStatisticsForCategory(
-    _i3.Category category,
-    DateTime start,
-    DateTime end,
+  _i2.Future<_i12.Statistics?> getMonthlyJournalStatistics(
+    _i3.Category? category,
+    _i5.Goal? goal,
+    DateTime month,
   ) =>
-      caller.callServerEndpoint<_i12.CategoryStatistics?>(
+      caller.callServerEndpoint<_i12.Statistics?>(
         'statistics',
-        'getStatisticsForCategory',
+        'getMonthlyJournalStatistics',
         {
           'category': category,
-          'start': start,
-          'end': end,
+          'goal': goal,
+          'month': month,
         },
       );
 }
