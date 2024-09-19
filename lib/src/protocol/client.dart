@@ -289,6 +289,12 @@ class EndpointProfile extends _i1.EndpointRef {
         {},
       );
 
+  _i2.Future<int> updateLocale(String locale) => caller.callServerEndpoint<int>(
+        'profile',
+        'updateLocale',
+        {'locale': locale},
+      );
+
   _i2.Future<int> updateBirthday(DateTime birthday) =>
       caller.callServerEndpoint<int>(
         'profile',
