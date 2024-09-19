@@ -21,6 +21,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     required this.hasPassedGoalTutorial,
     this.informationCollectionSetting,
     this.automaticRemindersSetting,
+    this.locale,
   });
 
   factory UserProfileDto({
@@ -33,6 +34,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     required bool hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
+    String? locale,
   }) = _UserProfileDtoImpl;
 
   factory UserProfileDto.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -50,6 +52,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
           jsonSerialization['informationCollectionSetting'] as bool?,
       automaticRemindersSetting:
           jsonSerialization['automaticRemindersSetting'] as bool?,
+      locale: jsonSerialization['locale'] as String?,
     );
   }
 
@@ -71,6 +74,8 @@ abstract class UserProfileDto implements _i1.SerializableModel {
 
   bool? automaticRemindersSetting;
 
+  String? locale;
+
   UserProfileDto copyWith({
     String? name,
     DateTime? birthday,
@@ -81,6 +86,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
+    String? locale,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -96,6 +102,7 @@ abstract class UserProfileDto implements _i1.SerializableModel {
         'informationCollectionSetting': informationCollectionSetting,
       if (automaticRemindersSetting != null)
         'automaticRemindersSetting': automaticRemindersSetting,
+      if (locale != null) 'locale': locale,
     };
   }
 
@@ -118,6 +125,7 @@ class _UserProfileDtoImpl extends UserProfileDto {
     required bool hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
+    String? locale,
   }) : super._(
           name: name,
           birthday: birthday,
@@ -128,6 +136,7 @@ class _UserProfileDtoImpl extends UserProfileDto {
           hasPassedGoalTutorial: hasPassedGoalTutorial,
           informationCollectionSetting: informationCollectionSetting,
           automaticRemindersSetting: automaticRemindersSetting,
+          locale: locale,
         );
 
   @override
@@ -141,6 +150,7 @@ class _UserProfileDtoImpl extends UserProfileDto {
     bool? hasPassedGoalTutorial,
     Object? informationCollectionSetting = _Undefined,
     Object? automaticRemindersSetting = _Undefined,
+    Object? locale = _Undefined,
   }) {
     return UserProfileDto(
       name: name ?? this.name,
@@ -157,6 +167,7 @@ class _UserProfileDtoImpl extends UserProfileDto {
       automaticRemindersSetting: automaticRemindersSetting is bool?
           ? automaticRemindersSetting
           : this.automaticRemindersSetting,
+      locale: locale is String? ? locale : this.locale,
     );
   }
 }

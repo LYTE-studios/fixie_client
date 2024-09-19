@@ -46,6 +46,13 @@ class EndpointCategories extends _i1.EndpointRef {
         {'category': category},
       );
 
+  _i2.Future<List<_i5.Goal>> getGoalsForCategory(int categoryId) =>
+      caller.callServerEndpoint<List<_i5.Goal>>(
+        'categories',
+        'getGoalsForCategory',
+        {'categoryId': categoryId},
+      );
+
   _i2.Future<List<_i3.Category>> getActiveCategories() =>
       caller.callServerEndpoint<List<_i3.Category>>(
         'categories',

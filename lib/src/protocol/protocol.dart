@@ -27,8 +27,8 @@ import 'statistics/user_statistics.dart' as _i15;
 import 'users/user.dart' as _i16;
 import 'users/user_profile_dto.dart' as _i17;
 import 'protocol.dart' as _i18;
-import 'package:fixie_client/src/protocol/category/category.dart' as _i19;
-import 'package:fixie_client/src/protocol/goals/goal.dart' as _i20;
+import 'package:fixie_client/src/protocol/goals/goal.dart' as _i19;
+import 'package:fixie_client/src/protocol/category/category.dart' as _i20;
 import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i21;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i22;
 export 'category/category.dart';
@@ -218,13 +218,17 @@ class Protocol extends _i1.SerializationManager {
           ? (data as List).map((e) => deserialize<_i18.Goal>(e)).toList()
           : null) as dynamic;
     }
-    if (t == List<_i19.Category>) {
-      return (data as List).map((e) => deserialize<_i19.Category>(e)).toList()
+    if (t == List<_i19.Goal>) {
+      return (data as List).map((e) => deserialize<_i19.Goal>(e)).toList()
           as dynamic;
     }
-    if (t == _i1.getType<List<_i20.Goal>?>()) {
+    if (t == List<_i20.Category>) {
+      return (data as List).map((e) => deserialize<_i20.Category>(e)).toList()
+          as dynamic;
+    }
+    if (t == _i1.getType<List<_i19.Goal>?>()) {
       return (data != null
-          ? (data as List).map((e) => deserialize<_i20.Goal>(e)).toList()
+          ? (data as List).map((e) => deserialize<_i19.Goal>(e)).toList()
           : null) as dynamic;
     }
     if (t == Map<String, String?>) {
