@@ -289,6 +289,19 @@ class EndpointProfile extends _i1.EndpointRef {
         {},
       );
 
+  _i2.Future<int> setEmptyLocale(
+    String email,
+    String locale,
+  ) =>
+      caller.callServerEndpoint<int>(
+        'profile',
+        'setEmptyLocale',
+        {
+          'email': email,
+          'locale': locale,
+        },
+      );
+
   _i2.Future<int> updateLocale(String locale) => caller.callServerEndpoint<int>(
         'profile',
         'updateLocale',

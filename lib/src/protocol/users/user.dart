@@ -26,7 +26,6 @@ abstract class User implements _i1.SerializableModel {
     this.hasPassedGoalTutorial,
     this.informationCollectionSetting,
     this.automaticRemindersSetting,
-    this.locale,
   });
 
   factory User({
@@ -42,7 +41,6 @@ abstract class User implements _i1.SerializableModel {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
-    String? locale,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -69,7 +67,6 @@ abstract class User implements _i1.SerializableModel {
           jsonSerialization['informationCollectionSetting'] as bool?,
       automaticRemindersSetting:
           jsonSerialization['automaticRemindersSetting'] as bool?,
-      locale: jsonSerialization['locale'] as String?,
     );
   }
 
@@ -100,8 +97,6 @@ abstract class User implements _i1.SerializableModel {
 
   bool? automaticRemindersSetting;
 
-  String? locale;
-
   User copyWith({
     int? id,
     int? userInfoId,
@@ -115,7 +110,6 @@ abstract class User implements _i1.SerializableModel {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
-    String? locale,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -136,7 +130,6 @@ abstract class User implements _i1.SerializableModel {
         'informationCollectionSetting': informationCollectionSetting,
       if (automaticRemindersSetting != null)
         'automaticRemindersSetting': automaticRemindersSetting,
-      if (locale != null) 'locale': locale,
     };
   }
 
@@ -162,7 +155,6 @@ class _UserImpl extends User {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
-    String? locale,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -176,7 +168,6 @@ class _UserImpl extends User {
           hasPassedGoalTutorial: hasPassedGoalTutorial,
           informationCollectionSetting: informationCollectionSetting,
           automaticRemindersSetting: automaticRemindersSetting,
-          locale: locale,
         );
 
   @override
@@ -193,7 +184,6 @@ class _UserImpl extends User {
     Object? hasPassedGoalTutorial = _Undefined,
     Object? informationCollectionSetting = _Undefined,
     Object? automaticRemindersSetting = _Undefined,
-    Object? locale = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -217,7 +207,6 @@ class _UserImpl extends User {
       automaticRemindersSetting: automaticRemindersSetting is bool?
           ? automaticRemindersSetting
           : this.automaticRemindersSetting,
-      locale: locale is String? ? locale : this.locale,
     );
   }
 }
