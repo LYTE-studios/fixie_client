@@ -1,11 +1,12 @@
 /* AUTOMATICALLY GENERATED CODE DO NOT MODIFY */
 /*   To generate run: "serverpod generate"    */
 
-// ignore_for_file: library_private_types_in_public_api
-// ignore_for_file: public_member_api_docs
 // ignore_for_file: implementation_imports
-// ignore_for_file: use_super_parameters
+// ignore_for_file: library_private_types_in_public_api
+// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: public_member_api_docs
 // ignore_for_file: type_literal_in_constant_pattern
+// ignore_for_file: use_super_parameters
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
@@ -186,12 +187,14 @@ class _JournalLogImpl extends JournalLog {
       id: id is int? ? id : this.id,
       goalId: goalId ?? this.goalId,
       goal: goal is _i2.Goal? ? goal : this.goal?.copyWith(),
-      picture: picture is List<String>? ? picture : this.picture?.clone(),
+      picture: picture is List<String>?
+          ? picture
+          : this.picture?.map((e0) => e0).toList(),
       note: note ?? this.note,
       loggedValue: loggedValue is double? ? loggedValue : this.loggedValue,
       registrationLog: registrationLog is List<_i2.RegistrationLog>?
           ? registrationLog
-          : this.registrationLog?.clone(),
+          : this.registrationLog?.map((e0) => e0.copyWith()).toList(),
       createdAt: createdAt ?? this.createdAt,
       modifiedAt: modifiedAt ?? this.modifiedAt,
       date: date ?? this.date,
