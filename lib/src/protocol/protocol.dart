@@ -35,7 +35,8 @@ import 'protocol.dart' as _i22;
 import 'package:fixie_client/src/protocol/goals/goal.dart' as _i23;
 import 'package:fixie_client/src/protocol/category/category.dart' as _i24;
 import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i25;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i26;
+import 'package:fixie_client/src/protocol/payment/purchase_item.dart' as _i26;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i27;
 export 'category/category.dart';
 export 'category/create_category_dto.dart';
 export 'core/endpoint_exception.dart';
@@ -276,8 +277,13 @@ class Protocol extends _i1.SerializationManager {
           ? (data as List).map((e) => deserialize<_i25.JournalLog>(e)).toList()
           : null) as dynamic;
     }
+    if (t == List<_i26.PurchaseItem>) {
+      return (data as List)
+          .map((e) => deserialize<_i26.PurchaseItem>(e))
+          .toList() as dynamic;
+    }
     try {
-      return _i26.Protocol().deserialize<T>(data, t);
+      return _i27.Protocol().deserialize<T>(data, t);
     } on _i1.DeserializationTypeNotFoundException catch (_) {}
     return super.deserialize<T>(data, t);
   }
@@ -346,7 +352,7 @@ class Protocol extends _i1.SerializationManager {
     if (data is _i21.UserProfileDto) {
       return 'UserProfileDto';
     }
-    className = _i26.Protocol().getClassNameForObject(data);
+    className = _i27.Protocol().getClassNameForObject(data);
     if (className != null) {
       return 'serverpod_auth.$className';
     }
@@ -417,7 +423,7 @@ class Protocol extends _i1.SerializationManager {
     }
     if (data['className'].startsWith('serverpod_auth.')) {
       data['className'] = data['className'].substring(15);
-      return _i26.Protocol().deserializeByClassName(data);
+      return _i27.Protocol().deserializeByClassName(data);
     }
     return super.deserializeByClassName(data);
   }

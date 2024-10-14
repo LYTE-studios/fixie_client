@@ -19,12 +19,13 @@ import 'package:fixie_client/src/protocol/goals/create_goal_dto.dart' as _i6;
 import 'package:fixie_client/src/protocol/journals/journal_log.dart' as _i7;
 import 'package:fixie_client/src/protocol/journals/journal_list_dto.dart'
     as _i8;
-import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i9;
-import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i10;
+import 'package:fixie_client/src/protocol/payment/purchase_item.dart' as _i9;
+import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i10;
+import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i11;
 import 'package:fixie_client/src/protocol/statistics/goal_statistics.dart'
-    as _i11;
-import 'package:fixie_client/src/protocol/statistics/statistics.dart' as _i12;
-import 'protocol.dart' as _i13;
+    as _i12;
+import 'package:fixie_client/src/protocol/statistics/statistics.dart' as _i13;
+import 'protocol.dart' as _i14;
 
 /// {@category Endpoint}
 class EndpointCategories extends _i1.EndpointRef {
@@ -245,6 +246,21 @@ class EndpointNotification extends _i1.EndpointRef {
 }
 
 /// {@category Endpoint}
+class EndpointPayments extends _i1.EndpointRef {
+  EndpointPayments(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'payments';
+
+  _i2.Future<List<_i9.PurchaseItem>> fetchActivePurchases() =>
+      caller.callServerEndpoint<List<_i9.PurchaseItem>>(
+        'payments',
+        'fetchActivePurchases',
+        {},
+      );
+}
+
+/// {@category Endpoint}
 class EndpointProfile extends _i1.EndpointRef {
   EndpointProfile(_i1.EndpointCaller caller) : super(caller);
 
@@ -271,7 +287,7 @@ class EndpointProfile extends _i1.EndpointRef {
       );
 
   _i2.Future<int> createUser(
-    _i9.UserInfo? user,
+    _i10.UserInfo? user,
     DateTime birthday,
   ) =>
       caller.callServerEndpoint<int>(
@@ -283,8 +299,8 @@ class EndpointProfile extends _i1.EndpointRef {
         },
       );
 
-  _i2.Future<_i10.UserProfileDto> getProfileData() =>
-      caller.callServerEndpoint<_i10.UserProfileDto>(
+  _i2.Future<_i11.UserProfileDto> getProfileData() =>
+      caller.callServerEndpoint<_i11.UserProfileDto>(
         'profile',
         'getProfileData',
         {},
@@ -363,19 +379,19 @@ class EndpointStatistics extends _i1.EndpointRef {
   @override
   String get name => 'statistics';
 
-  _i2.Future<_i11.GoalStatistics?> getStatisticsForGoal(_i5.Goal goal) =>
-      caller.callServerEndpoint<_i11.GoalStatistics?>(
+  _i2.Future<_i12.GoalStatistics?> getStatisticsForGoal(_i5.Goal goal) =>
+      caller.callServerEndpoint<_i12.GoalStatistics?>(
         'statistics',
         'getStatisticsForGoal',
         {'goal': goal},
       );
 
-  _i2.Future<_i12.Statistics?> getMonthlyJournalStatistics(
+  _i2.Future<_i13.Statistics?> getMonthlyJournalStatistics(
     _i3.Category? category,
     _i5.Goal? goal,
     DateTime month,
   ) =>
-      caller.callServerEndpoint<_i12.Statistics?>(
+      caller.callServerEndpoint<_i13.Statistics?>(
         'statistics',
         'getMonthlyJournalStatistics',
         {
@@ -388,10 +404,10 @@ class EndpointStatistics extends _i1.EndpointRef {
 
 class _Modules {
   _Modules(Client client) {
-    auth = _i9.Caller(client);
+    auth = _i10.Caller(client);
   }
 
-  late final _i9.Caller auth;
+  late final _i10.Caller auth;
 }
 
 class Client extends _i1.ServerpodClientShared {
@@ -410,7 +426,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i13.Protocol(),
+          _i14.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
@@ -425,6 +441,7 @@ class Client extends _i1.ServerpodClientShared {
     goals = EndpointGoals(this);
     journal = EndpointJournal(this);
     notification = EndpointNotification(this);
+    payments = EndpointPayments(this);
     profile = EndpointProfile(this);
     statistics = EndpointStatistics(this);
     modules = _Modules(this);
@@ -440,6 +457,8 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointNotification notification;
 
+  late final EndpointPayments payments;
+
   late final EndpointProfile profile;
 
   late final EndpointStatistics statistics;
@@ -453,6 +472,7 @@ class Client extends _i1.ServerpodClientShared {
         'goals': goals,
         'journal': journal,
         'notification': notification,
+        'payments': payments,
         'profile': profile,
         'statistics': statistics,
       };
