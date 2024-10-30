@@ -402,6 +402,27 @@ class EndpointStatistics extends _i1.EndpointRef {
       );
 }
 
+/// {@category Endpoint}
+class EndpointTheme extends _i1.EndpointRef {
+  EndpointTheme(_i1.EndpointCaller caller) : super(caller);
+
+  @override
+  String get name => 'theme';
+
+  _i2.Future<void> updatePrivacySettings({
+    bool? informationCollection,
+    bool? automaticReminders,
+  }) =>
+      caller.callServerEndpoint<void>(
+        'theme',
+        'updatePrivacySettings',
+        {
+          'informationCollection': informationCollection,
+          'automaticReminders': automaticReminders,
+        },
+      );
+}
+
 class _Modules {
   _Modules(Client client) {
     auth = _i10.Caller(client);
@@ -444,6 +465,7 @@ class Client extends _i1.ServerpodClientShared {
     payments = EndpointPayments(this);
     profile = EndpointProfile(this);
     statistics = EndpointStatistics(this);
+    theme = EndpointTheme(this);
     modules = _Modules(this);
   }
 
@@ -463,6 +485,8 @@ class Client extends _i1.ServerpodClientShared {
 
   late final EndpointStatistics statistics;
 
+  late final EndpointTheme theme;
+
   late final _Modules modules;
 
   @override
@@ -475,6 +499,7 @@ class Client extends _i1.ServerpodClientShared {
         'payments': payments,
         'profile': profile,
         'statistics': statistics,
+        'theme': theme,
       };
 
   @override

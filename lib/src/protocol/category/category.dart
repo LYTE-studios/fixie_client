@@ -18,6 +18,7 @@ abstract class Category implements _i1.SerializableModel {
     required this.color,
     this.icon,
     this.userId,
+    this.presetId,
   });
 
   factory Category({
@@ -26,6 +27,7 @@ abstract class Category implements _i1.SerializableModel {
     required String color,
     String? icon,
     int? userId,
+    int? presetId,
   }) = _CategoryImpl;
 
   factory Category.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -35,6 +37,7 @@ abstract class Category implements _i1.SerializableModel {
       color: jsonSerialization['color'] as String,
       icon: jsonSerialization['icon'] as String?,
       userId: jsonSerialization['userId'] as int?,
+      presetId: jsonSerialization['presetId'] as int?,
     );
   }
 
@@ -51,12 +54,15 @@ abstract class Category implements _i1.SerializableModel {
 
   int? userId;
 
+  int? presetId;
+
   Category copyWith({
     int? id,
     String? title,
     String? color,
     String? icon,
     int? userId,
+    int? presetId,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -66,6 +72,7 @@ abstract class Category implements _i1.SerializableModel {
       'color': color,
       if (icon != null) 'icon': icon,
       if (userId != null) 'userId': userId,
+      if (presetId != null) 'presetId': presetId,
     };
   }
 
@@ -84,12 +91,14 @@ class _CategoryImpl extends Category {
     required String color,
     String? icon,
     int? userId,
+    int? presetId,
   }) : super._(
           id: id,
           title: title,
           color: color,
           icon: icon,
           userId: userId,
+          presetId: presetId,
         );
 
   @override
@@ -99,6 +108,7 @@ class _CategoryImpl extends Category {
     String? color,
     Object? icon = _Undefined,
     Object? userId = _Undefined,
+    Object? presetId = _Undefined,
   }) {
     return Category(
       id: id is int? ? id : this.id,
@@ -106,6 +116,7 @@ class _CategoryImpl extends Category {
       color: color ?? this.color,
       icon: icon is String? ? icon : this.icon,
       userId: userId is int? ? userId : this.userId,
+      presetId: presetId is int? ? presetId : this.presetId,
     );
   }
 }
