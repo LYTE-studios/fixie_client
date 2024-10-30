@@ -263,18 +263,6 @@ class Protocol extends _i1.SerializationManager {
               .toList()
           : null) as dynamic;
     }
-    if (t == _i1.getType<List<_i23.Goal>?>()) {
-      return (data != null
-          ? (data as List).map((e) => deserialize<_i23.Goal>(e)).toList()
-          : null) as dynamic;
-    }
-    if (t == _i1.getType<List<_i23.PurchaseItem>?>()) {
-      return (data != null
-          ? (data as List)
-              .map((e) => deserialize<_i23.PurchaseItem>(e))
-              .toList()
-          : null) as dynamic;
-    }
     if (t == List<_i24.Goal>) {
       return (data as List).map((e) => deserialize<_i24.Goal>(e)).toList()
           as dynamic;
