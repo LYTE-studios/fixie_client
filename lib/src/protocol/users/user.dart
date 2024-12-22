@@ -11,7 +11,8 @@
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i2;
-import '../protocol.dart' as _i3;
+import '../goals/goal.dart' as _i3;
+import '../payment/purchase_item.dart' as _i4;
 
 abstract class User implements _i1.SerializableModel {
   User._({
@@ -36,7 +37,7 @@ abstract class User implements _i1.SerializableModel {
     _i2.UserInfo? userInfo,
     DateTime? birthday,
     List<_i3.Goal>? goals,
-    List<_i3.PurchaseItem>? purchases,
+    List<_i4.PurchaseItem>? purchases,
     int? highestStreak,
     String? picture,
     bool? hasPassedOnboarding,
@@ -61,7 +62,7 @@ abstract class User implements _i1.SerializableModel {
           ?.map((e) => _i3.Goal.fromJson((e as Map<String, dynamic>)))
           .toList(),
       purchases: (jsonSerialization['purchases'] as List?)
-          ?.map((e) => _i3.PurchaseItem.fromJson((e as Map<String, dynamic>)))
+          ?.map((e) => _i4.PurchaseItem.fromJson((e as Map<String, dynamic>)))
           .toList(),
       highestStreak: jsonSerialization['highestStreak'] as int?,
       picture: jsonSerialization['picture'] as String?,
@@ -89,7 +90,7 @@ abstract class User implements _i1.SerializableModel {
 
   List<_i3.Goal>? goals;
 
-  List<_i3.PurchaseItem>? purchases;
+  List<_i4.PurchaseItem>? purchases;
 
   int? highestStreak;
 
@@ -111,7 +112,7 @@ abstract class User implements _i1.SerializableModel {
     _i2.UserInfo? userInfo,
     DateTime? birthday,
     List<_i3.Goal>? goals,
-    List<_i3.PurchaseItem>? purchases,
+    List<_i4.PurchaseItem>? purchases,
     int? highestStreak,
     String? picture,
     bool? hasPassedOnboarding,
@@ -159,7 +160,7 @@ class _UserImpl extends User {
     _i2.UserInfo? userInfo,
     DateTime? birthday,
     List<_i3.Goal>? goals,
-    List<_i3.PurchaseItem>? purchases,
+    List<_i4.PurchaseItem>? purchases,
     int? highestStreak,
     String? picture,
     bool? hasPassedOnboarding,
@@ -208,7 +209,7 @@ class _UserImpl extends User {
       goals: goals is List<_i3.Goal>?
           ? goals
           : this.goals?.map((e0) => e0.copyWith()).toList(),
-      purchases: purchases is List<_i3.PurchaseItem>?
+      purchases: purchases is List<_i4.PurchaseItem>?
           ? purchases
           : this.purchases?.map((e0) => e0.copyWith()).toList(),
       highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,

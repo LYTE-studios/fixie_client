@@ -10,7 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../protocol.dart' as _i2;
+import '../category/category.dart' as _i2;
+import '../shared/repetition.dart' as _i3;
 
 abstract class CreateGoalDto implements _i1.SerializableModel {
   CreateGoalDto._({
@@ -32,7 +33,7 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     required int target,
     String? unit,
     _i2.Category? category,
-    _i2.Repetition? repetition,
+    _i3.Repetition? repetition,
     int? repeatEvery,
     List<int>? weekdays,
     DateTime? end,
@@ -51,7 +52,7 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
               (jsonSerialization['category'] as Map<String, dynamic>)),
       repetition: jsonSerialization['repetition'] == null
           ? null
-          : _i2.Repetition.fromJson((jsonSerialization['repetition'] as int)),
+          : _i3.Repetition.fromJson((jsonSerialization['repetition'] as int)),
       repeatEvery: jsonSerialization['repeatEvery'] as int?,
       weekdays: (jsonSerialization['weekdays'] as List?)
           ?.map((e) => e as int)
@@ -75,7 +76,7 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
 
   _i2.Category? category;
 
-  _i2.Repetition? repetition;
+  _i3.Repetition? repetition;
 
   int? repeatEvery;
 
@@ -91,7 +92,7 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
     int? target,
     String? unit,
     _i2.Category? category,
-    _i2.Repetition? repetition,
+    _i3.Repetition? repetition,
     int? repeatEvery,
     List<int>? weekdays,
     DateTime? end,
@@ -129,7 +130,7 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
     required int target,
     String? unit,
     _i2.Category? category,
-    _i2.Repetition? repetition,
+    _i3.Repetition? repetition,
     int? repeatEvery,
     List<int>? weekdays,
     DateTime? end,
@@ -167,7 +168,7 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
       unit: unit is String? ? unit : this.unit,
       category:
           category is _i2.Category? ? category : this.category?.copyWith(),
-      repetition: repetition is _i2.Repetition? ? repetition : this.repetition,
+      repetition: repetition is _i3.Repetition? ? repetition : this.repetition,
       repeatEvery: repeatEvery is int? ? repeatEvery : this.repeatEvery,
       weekdays: weekdays is List<int>?
           ? weekdays

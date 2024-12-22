@@ -10,7 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../protocol.dart' as _i2;
+import '../goals/goal.dart' as _i2;
+import '../journals/registration_log.dart' as _i3;
 
 abstract class JournalLog implements _i1.SerializableModel {
   JournalLog._({
@@ -35,7 +36,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     List<String>? picture,
     required String note,
     double? loggedValue,
-    List<_i2.RegistrationLog>? registrationLog,
+    List<_i3.RegistrationLog>? registrationLog,
     required DateTime createdAt,
     required DateTime modifiedAt,
     required DateTime date,
@@ -58,7 +59,7 @@ abstract class JournalLog implements _i1.SerializableModel {
       loggedValue: (jsonSerialization['loggedValue'] as num?)?.toDouble(),
       registrationLog: (jsonSerialization['registrationLog'] as List?)
           ?.map(
-              (e) => _i2.RegistrationLog.fromJson((e as Map<String, dynamic>)))
+              (e) => _i3.RegistrationLog.fromJson((e as Map<String, dynamic>)))
           .toList(),
       createdAt:
           _i1.DateTimeJsonExtension.fromJson(jsonSerialization['createdAt']),
@@ -85,7 +86,7 @@ abstract class JournalLog implements _i1.SerializableModel {
 
   double? loggedValue;
 
-  List<_i2.RegistrationLog>? registrationLog;
+  List<_i3.RegistrationLog>? registrationLog;
 
   DateTime createdAt;
 
@@ -104,7 +105,7 @@ abstract class JournalLog implements _i1.SerializableModel {
     List<String>? picture,
     String? note,
     double? loggedValue,
-    List<_i2.RegistrationLog>? registrationLog,
+    List<_i3.RegistrationLog>? registrationLog,
     DateTime? createdAt,
     DateTime? modifiedAt,
     DateTime? date,
@@ -147,7 +148,7 @@ class _JournalLogImpl extends JournalLog {
     List<String>? picture,
     required String note,
     double? loggedValue,
-    List<_i2.RegistrationLog>? registrationLog,
+    List<_i3.RegistrationLog>? registrationLog,
     required DateTime createdAt,
     required DateTime modifiedAt,
     required DateTime date,
@@ -192,7 +193,7 @@ class _JournalLogImpl extends JournalLog {
           : this.picture?.map((e0) => e0).toList(),
       note: note ?? this.note,
       loggedValue: loggedValue is double? ? loggedValue : this.loggedValue,
-      registrationLog: registrationLog is List<_i2.RegistrationLog>?
+      registrationLog: registrationLog is List<_i3.RegistrationLog>?
           ? registrationLog
           : this.registrationLog?.map((e0) => e0.copyWith()).toList(),
       createdAt: createdAt ?? this.createdAt,

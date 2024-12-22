@@ -10,7 +10,8 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../protocol.dart' as _i2;
+import '../payment/benefit.dart' as _i2;
+import '../users/user.dart' as _i3;
 
 abstract class PurchaseItem implements _i1.SerializableModel {
   PurchaseItem._({
@@ -30,7 +31,7 @@ abstract class PurchaseItem implements _i1.SerializableModel {
     DateTime? created,
     String? internalInfo,
     required int userId,
-    _i2.User? user,
+    _i3.User? user,
   }) = _PurchaseItemImpl;
 
   factory PurchaseItem.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -48,7 +49,7 @@ abstract class PurchaseItem implements _i1.SerializableModel {
       userId: jsonSerialization['userId'] as int,
       user: jsonSerialization['user'] == null
           ? null
-          : _i2.User.fromJson(
+          : _i3.User.fromJson(
               (jsonSerialization['user'] as Map<String, dynamic>)),
     );
   }
@@ -68,7 +69,7 @@ abstract class PurchaseItem implements _i1.SerializableModel {
 
   int userId;
 
-  _i2.User? user;
+  _i3.User? user;
 
   PurchaseItem copyWith({
     int? id,
@@ -77,7 +78,7 @@ abstract class PurchaseItem implements _i1.SerializableModel {
     DateTime? created,
     String? internalInfo,
     int? userId,
-    _i2.User? user,
+    _i3.User? user,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -108,7 +109,7 @@ class _PurchaseItemImpl extends PurchaseItem {
     DateTime? created,
     String? internalInfo,
     required int userId,
-    _i2.User? user,
+    _i3.User? user,
   }) : super._(
           id: id,
           benefitIdentifier: benefitIdentifier,
@@ -136,7 +137,7 @@ class _PurchaseItemImpl extends PurchaseItem {
       created: created is DateTime? ? created : this.created,
       internalInfo: internalInfo is String? ? internalInfo : this.internalInfo,
       userId: userId ?? this.userId,
-      user: user is _i2.User? ? user : this.user?.copyWith(),
+      user: user is _i3.User? ? user : this.user?.copyWith(),
     );
   }
 }

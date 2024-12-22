@@ -10,7 +10,10 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:serverpod_client/serverpod_client.dart' as _i1;
-import '../protocol.dart' as _i2;
+import '../users/user.dart' as _i2;
+import '../category/category.dart' as _i3;
+import '../shared/repetition.dart' as _i4;
+import '../journals/journal_log.dart' as _i5;
 
 abstract class Goal implements _i1.SerializableModel {
   Goal._({
@@ -44,13 +47,13 @@ abstract class Goal implements _i1.SerializableModel {
     required int target,
     String? unit,
     required int categoryId,
-    _i2.Category? category,
-    _i2.Repetition? repetition,
+    _i3.Category? category,
+    _i4.Repetition? repetition,
     int? repeatEvery,
     List<int>? weekdays,
     DateTime? end,
     List<DateTime>? reminders,
-    List<_i2.JournalLog>? journal,
+    List<_i5.JournalLog>? journal,
     int? highestStreak,
     required bool active,
     required bool archived,
@@ -72,11 +75,11 @@ abstract class Goal implements _i1.SerializableModel {
       categoryId: jsonSerialization['categoryId'] as int,
       category: jsonSerialization['category'] == null
           ? null
-          : _i2.Category.fromJson(
+          : _i3.Category.fromJson(
               (jsonSerialization['category'] as Map<String, dynamic>)),
       repetition: jsonSerialization['repetition'] == null
           ? null
-          : _i2.Repetition.fromJson((jsonSerialization['repetition'] as int)),
+          : _i4.Repetition.fromJson((jsonSerialization['repetition'] as int)),
       repeatEvery: jsonSerialization['repeatEvery'] as int?,
       weekdays: (jsonSerialization['weekdays'] as List?)
           ?.map((e) => e as int)
@@ -88,7 +91,7 @@ abstract class Goal implements _i1.SerializableModel {
           ?.map((e) => _i1.DateTimeJsonExtension.fromJson(e))
           .toList(),
       journal: (jsonSerialization['journal'] as List?)
-          ?.map((e) => _i2.JournalLog.fromJson((e as Map<String, dynamic>)))
+          ?.map((e) => _i5.JournalLog.fromJson((e as Map<String, dynamic>)))
           .toList(),
       highestStreak: jsonSerialization['highestStreak'] as int?,
       active: jsonSerialization['active'] as bool,
@@ -118,9 +121,9 @@ abstract class Goal implements _i1.SerializableModel {
 
   int categoryId;
 
-  _i2.Category? category;
+  _i3.Category? category;
 
-  _i2.Repetition? repetition;
+  _i4.Repetition? repetition;
 
   int? repeatEvery;
 
@@ -130,7 +133,7 @@ abstract class Goal implements _i1.SerializableModel {
 
   List<DateTime>? reminders;
 
-  List<_i2.JournalLog>? journal;
+  List<_i5.JournalLog>? journal;
 
   int? highestStreak;
 
@@ -149,13 +152,13 @@ abstract class Goal implements _i1.SerializableModel {
     int? target,
     String? unit,
     int? categoryId,
-    _i2.Category? category,
-    _i2.Repetition? repetition,
+    _i3.Category? category,
+    _i4.Repetition? repetition,
     int? repeatEvery,
     List<int>? weekdays,
     DateTime? end,
     List<DateTime>? reminders,
-    List<_i2.JournalLog>? journal,
+    List<_i5.JournalLog>? journal,
     int? highestStreak,
     bool? active,
     bool? archived,
@@ -206,13 +209,13 @@ class _GoalImpl extends Goal {
     required int target,
     String? unit,
     required int categoryId,
-    _i2.Category? category,
-    _i2.Repetition? repetition,
+    _i3.Category? category,
+    _i4.Repetition? repetition,
     int? repeatEvery,
     List<int>? weekdays,
     DateTime? end,
     List<DateTime>? reminders,
-    List<_i2.JournalLog>? journal,
+    List<_i5.JournalLog>? journal,
     int? highestStreak,
     required bool active,
     required bool archived,
@@ -271,8 +274,8 @@ class _GoalImpl extends Goal {
       unit: unit is String? ? unit : this.unit,
       categoryId: categoryId ?? this.categoryId,
       category:
-          category is _i2.Category? ? category : this.category?.copyWith(),
-      repetition: repetition is _i2.Repetition? ? repetition : this.repetition,
+          category is _i3.Category? ? category : this.category?.copyWith(),
+      repetition: repetition is _i4.Repetition? ? repetition : this.repetition,
       repeatEvery: repeatEvery is int? ? repeatEvery : this.repeatEvery,
       weekdays: weekdays is List<int>?
           ? weekdays
@@ -281,7 +284,7 @@ class _GoalImpl extends Goal {
       reminders: reminders is List<DateTime>?
           ? reminders
           : this.reminders?.map((e0) => e0).toList(),
-      journal: journal is List<_i2.JournalLog>?
+      journal: journal is List<_i5.JournalLog>?
           ? journal
           : this.journal?.map((e0) => e0.copyWith()).toList(),
       highestStreak: highestStreak is int? ? highestStreak : this.highestStreak,
