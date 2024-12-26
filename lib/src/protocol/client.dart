@@ -252,6 +252,18 @@ class EndpointPayments extends _i1.EndpointRef {
   @override
   String get name => 'payments';
 
+  _i2.Future<bool> canStartTrial() => caller.callServerEndpoint<bool>(
+        'payments',
+        'canStartTrial',
+        {},
+      );
+
+  _i2.Future<void> startTrial() => caller.callServerEndpoint<void>(
+        'payments',
+        'startTrial',
+        {},
+      );
+
   _i2.Future<List<_i9.PurchaseItem>> fetchActivePurchases() =>
       caller.callServerEndpoint<List<_i9.PurchaseItem>>(
         'payments',
