@@ -13,6 +13,7 @@ import 'package:serverpod_client/serverpod_client.dart' as _i1;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i2;
 import '../goals/goal.dart' as _i3;
 import '../payment/purchase_item.dart' as _i4;
+import '../users/archetype.dart' as _i5;
 
 abstract class User implements _i1.SerializableModel {
   User._({
@@ -29,6 +30,7 @@ abstract class User implements _i1.SerializableModel {
     this.hasPassedGoalTutorial,
     this.informationCollectionSetting,
     this.automaticRemindersSetting,
+    this.archetype,
   });
 
   factory User({
@@ -45,6 +47,7 @@ abstract class User implements _i1.SerializableModel {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
+    _i5.Archetype? archetype,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -74,6 +77,9 @@ abstract class User implements _i1.SerializableModel {
           jsonSerialization['informationCollectionSetting'] as bool?,
       automaticRemindersSetting:
           jsonSerialization['automaticRemindersSetting'] as bool?,
+      archetype: jsonSerialization['archetype'] == null
+          ? null
+          : _i5.Archetype.fromJson((jsonSerialization['archetype'] as int)),
     );
   }
 
@@ -106,6 +112,8 @@ abstract class User implements _i1.SerializableModel {
 
   bool? automaticRemindersSetting;
 
+  _i5.Archetype? archetype;
+
   User copyWith({
     int? id,
     int? userInfoId,
@@ -120,6 +128,7 @@ abstract class User implements _i1.SerializableModel {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
+    _i5.Archetype? archetype,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -142,6 +151,7 @@ abstract class User implements _i1.SerializableModel {
         'informationCollectionSetting': informationCollectionSetting,
       if (automaticRemindersSetting != null)
         'automaticRemindersSetting': automaticRemindersSetting,
+      if (archetype != null) 'archetype': archetype?.toJson(),
     };
   }
 
@@ -168,6 +178,7 @@ class _UserImpl extends User {
     bool? hasPassedGoalTutorial,
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
+    _i5.Archetype? archetype,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -182,6 +193,7 @@ class _UserImpl extends User {
           hasPassedGoalTutorial: hasPassedGoalTutorial,
           informationCollectionSetting: informationCollectionSetting,
           automaticRemindersSetting: automaticRemindersSetting,
+          archetype: archetype,
         );
 
   @override
@@ -199,6 +211,7 @@ class _UserImpl extends User {
     Object? hasPassedGoalTutorial = _Undefined,
     Object? informationCollectionSetting = _Undefined,
     Object? automaticRemindersSetting = _Undefined,
+    Object? archetype = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -227,6 +240,7 @@ class _UserImpl extends User {
       automaticRemindersSetting: automaticRemindersSetting is bool?
           ? automaticRemindersSetting
           : this.automaticRemindersSetting,
+      archetype: archetype is _i5.Archetype? ? archetype : this.archetype,
     );
   }
 }

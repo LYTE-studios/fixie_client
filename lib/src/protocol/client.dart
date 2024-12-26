@@ -22,10 +22,11 @@ import 'package:fixie_client/src/protocol/journals/journal_list_dto.dart'
 import 'package:fixie_client/src/protocol/payment/purchase_item.dart' as _i9;
 import 'package:serverpod_auth_client/serverpod_auth_client.dart' as _i10;
 import 'package:fixie_client/src/protocol/users/user_profile_dto.dart' as _i11;
+import 'package:fixie_client/src/protocol/users/archetype.dart' as _i12;
 import 'package:fixie_client/src/protocol/statistics/goal_statistics.dart'
-    as _i12;
-import 'package:fixie_client/src/protocol/statistics/statistics.dart' as _i13;
-import 'protocol.dart' as _i14;
+    as _i13;
+import 'package:fixie_client/src/protocol/statistics/statistics.dart' as _i14;
+import 'protocol.dart' as _i15;
 
 /// {@category Endpoint}
 class EndpointCategories extends _i1.EndpointRef {
@@ -318,6 +319,13 @@ class EndpointProfile extends _i1.EndpointRef {
         {},
       );
 
+  _i2.Future<void> setUserArchetype(_i12.Archetype archetype) =>
+      caller.callServerEndpoint<void>(
+        'profile',
+        'setUserArchetype',
+        {'archetype': archetype},
+      );
+
   _i2.Future<int> setEmptyLocale(
     String email,
     String locale,
@@ -391,19 +399,19 @@ class EndpointStatistics extends _i1.EndpointRef {
   @override
   String get name => 'statistics';
 
-  _i2.Future<_i12.GoalStatistics?> getStatisticsForGoal(_i5.Goal goal) =>
-      caller.callServerEndpoint<_i12.GoalStatistics?>(
+  _i2.Future<_i13.GoalStatistics?> getStatisticsForGoal(_i5.Goal goal) =>
+      caller.callServerEndpoint<_i13.GoalStatistics?>(
         'statistics',
         'getStatisticsForGoal',
         {'goal': goal},
       );
 
-  _i2.Future<_i13.Statistics?> getMonthlyJournalStatistics(
+  _i2.Future<_i14.Statistics?> getMonthlyJournalStatistics(
     _i3.Category? category,
     _i5.Goal? goal,
     DateTime month,
   ) =>
-      caller.callServerEndpoint<_i13.Statistics?>(
+      caller.callServerEndpoint<_i14.Statistics?>(
         'statistics',
         'getMonthlyJournalStatistics',
         {
@@ -459,7 +467,7 @@ class Client extends _i1.ServerpodClientShared {
     bool? disconnectStreamsOnLostInternetConnection,
   }) : super(
           host,
-          _i14.Protocol(),
+          _i15.Protocol(),
           securityContext: securityContext,
           authenticationKeyManager: authenticationKeyManager,
           streamingConnectionTimeout: streamingConnectionTimeout,
