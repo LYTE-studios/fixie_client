@@ -31,6 +31,7 @@ abstract class User implements _i1.SerializableModel {
     this.informationCollectionSetting,
     this.automaticRemindersSetting,
     this.archetype,
+    this.limitedOfferEndTime,
   });
 
   factory User({
@@ -48,6 +49,7 @@ abstract class User implements _i1.SerializableModel {
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
     _i5.Archetype? archetype,
+    DateTime? limitedOfferEndTime,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -80,6 +82,10 @@ abstract class User implements _i1.SerializableModel {
       archetype: jsonSerialization['archetype'] == null
           ? null
           : _i5.Archetype.fromJson((jsonSerialization['archetype'] as int)),
+      limitedOfferEndTime: jsonSerialization['limitedOfferEndTime'] == null
+          ? null
+          : _i1.DateTimeJsonExtension.fromJson(
+              jsonSerialization['limitedOfferEndTime']),
     );
   }
 
@@ -114,6 +120,8 @@ abstract class User implements _i1.SerializableModel {
 
   _i5.Archetype? archetype;
 
+  DateTime? limitedOfferEndTime;
+
   User copyWith({
     int? id,
     int? userInfoId,
@@ -129,6 +137,7 @@ abstract class User implements _i1.SerializableModel {
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
     _i5.Archetype? archetype,
+    DateTime? limitedOfferEndTime,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -152,6 +161,8 @@ abstract class User implements _i1.SerializableModel {
       if (automaticRemindersSetting != null)
         'automaticRemindersSetting': automaticRemindersSetting,
       if (archetype != null) 'archetype': archetype?.toJson(),
+      if (limitedOfferEndTime != null)
+        'limitedOfferEndTime': limitedOfferEndTime?.toJson(),
     };
   }
 
@@ -179,6 +190,7 @@ class _UserImpl extends User {
     bool? informationCollectionSetting,
     bool? automaticRemindersSetting,
     _i5.Archetype? archetype,
+    DateTime? limitedOfferEndTime,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -194,6 +206,7 @@ class _UserImpl extends User {
           informationCollectionSetting: informationCollectionSetting,
           automaticRemindersSetting: automaticRemindersSetting,
           archetype: archetype,
+          limitedOfferEndTime: limitedOfferEndTime,
         );
 
   @override
@@ -212,6 +225,7 @@ class _UserImpl extends User {
     Object? informationCollectionSetting = _Undefined,
     Object? automaticRemindersSetting = _Undefined,
     Object? archetype = _Undefined,
+    Object? limitedOfferEndTime = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -241,6 +255,9 @@ class _UserImpl extends User {
           ? automaticRemindersSetting
           : this.automaticRemindersSetting,
       archetype: archetype is _i5.Archetype? ? archetype : this.archetype,
+      limitedOfferEndTime: limitedOfferEndTime is DateTime?
+          ? limitedOfferEndTime
+          : this.limitedOfferEndTime,
     );
   }
 }

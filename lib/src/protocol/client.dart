@@ -253,6 +253,13 @@ class EndpointPayments extends _i1.EndpointRef {
   @override
   String get name => 'payments';
 
+  _i2.Future<DateTime?> getLimitedOffer() =>
+      caller.callServerEndpoint<DateTime?>(
+        'payments',
+        'getLimitedOffer',
+        {},
+      );
+
   _i2.Future<bool> canStartTrial() => caller.callServerEndpoint<bool>(
         'payments',
         'canStartTrial',
