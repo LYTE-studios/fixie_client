@@ -287,6 +287,13 @@ class EndpointProfile extends _i1.EndpointRef {
   @override
   String get name => 'profile';
 
+  _i2.Future<void> deleteEmailRequest(String email) =>
+      caller.callServerEndpoint<void>(
+        'profile',
+        'deleteEmailRequest',
+        {'email': email},
+      );
+
   _i2.Future<void> updatePrivacySettings({
     bool? informationCollection,
     bool? automaticReminders,

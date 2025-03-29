@@ -85,6 +85,9 @@ abstract class UserProfileDto implements _i1.SerializableModel {
 
   _i2.Archetype? archetype;
 
+  /// Returns a shallow copy of this [UserProfileDto]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   UserProfileDto copyWith({
     String? name,
     DateTime? birthday,
@@ -152,6 +155,9 @@ class _UserProfileDtoImpl extends UserProfileDto {
           archetype: archetype,
         );
 
+  /// Returns a shallow copy of this [UserProfileDto]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   UserProfileDto copyWith({
     String? name,

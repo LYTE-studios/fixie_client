@@ -209,92 +209,90 @@ class Protocol extends _i1.SerializationManager {
     if (t == _i1.getType<List<int>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<int>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<DateTime>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<DateTime>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<int>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<int>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<DateTime>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<DateTime>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<_i10.JournalLog>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i10.JournalLog>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == List<_i10.JournalLog>) {
       return (data as List).map((e) => deserialize<_i10.JournalLog>(e)).toList()
-          as dynamic;
+          as T;
     }
     if (t == _i1.getType<List<String>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<String>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<_i11.RegistrationLog>?>()) {
       return (data != null
           ? (data as List)
               .map((e) => deserialize<_i11.RegistrationLog>(e))
               .toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == Map<DateTime, double?>) {
       return Map.fromEntries((data as List).map((e) => MapEntry(
-              deserialize<DateTime>(e['k']), deserialize<double?>(e['v']))))
-          as dynamic;
+          deserialize<DateTime>(e['k']), deserialize<double?>(e['v'])))) as T;
     }
     if (t == Map<int, double>) {
       return Map.fromEntries((data as List).map((e) =>
               MapEntry(deserialize<int>(e['k']), deserialize<double>(e['v']))))
-          as dynamic;
+          as T;
     }
     if (t == _i1.getType<List<_i8.Goal>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i8.Goal>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == _i1.getType<List<_i15.PurchaseItem>?>()) {
       return (data != null
           ? (data as List)
               .map((e) => deserialize<_i15.PurchaseItem>(e))
               .toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == List<_i24.Goal>) {
-      return (data as List).map((e) => deserialize<_i24.Goal>(e)).toList()
-          as dynamic;
+      return (data as List).map((e) => deserialize<_i24.Goal>(e)).toList() as T;
     }
     if (t == List<_i25.Category>) {
       return (data as List).map((e) => deserialize<_i25.Category>(e)).toList()
-          as dynamic;
+          as T;
     }
     if (t == _i1.getType<List<_i24.Goal>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i24.Goal>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == Map<String, String?>) {
       return (data as Map).map((k, v) =>
-          MapEntry(deserialize<String>(k), deserialize<String?>(v))) as dynamic;
+          MapEntry(deserialize<String>(k), deserialize<String?>(v))) as T;
     }
     if (t == _i1.getType<List<_i26.JournalLog>?>()) {
       return (data != null
           ? (data as List).map((e) => deserialize<_i26.JournalLog>(e)).toList()
-          : null) as dynamic;
+          : null) as T;
     }
     if (t == List<_i27.PurchaseItem>) {
       return (data as List)
           .map((e) => deserialize<_i27.PurchaseItem>(e))
-          .toList() as dynamic;
+          .toList() as T;
     }
     try {
       return _i28.Protocol().deserialize<T>(data, t);

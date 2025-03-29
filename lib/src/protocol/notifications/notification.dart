@@ -48,6 +48,9 @@ abstract class Notification implements _i1.SerializableModel {
 
   String? image;
 
+  /// Returns a shallow copy of this [Notification]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   Notification copyWith({
     String? title,
     String? description,
@@ -89,6 +92,9 @@ class _NotificationImpl extends Notification {
           image: image,
         );
 
+  /// Returns a shallow copy of this [Notification]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   Notification copyWith({
     String? title,

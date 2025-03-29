@@ -98,6 +98,9 @@ abstract class JournalLog implements _i1.SerializableModel {
 
   int? currentStreak;
 
+  /// Returns a shallow copy of this [JournalLog]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   JournalLog copyWith({
     int? id,
     int? goalId,
@@ -169,6 +172,9 @@ class _JournalLogImpl extends JournalLog {
           currentStreak: currentStreak,
         );
 
+  /// Returns a shallow copy of this [JournalLog]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   JournalLog copyWith({
     Object? id = _Undefined,

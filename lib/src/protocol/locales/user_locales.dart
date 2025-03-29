@@ -41,6 +41,9 @@ abstract class UserLocales implements _i1.SerializableModel {
 
   String? locale;
 
+  /// Returns a shallow copy of this [UserLocales]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   UserLocales copyWith({
     int? id,
     String? email,
@@ -74,6 +77,9 @@ class _UserLocalesImpl extends UserLocales {
           locale: locale,
         );
 
+  /// Returns a shallow copy of this [UserLocales]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   UserLocales copyWith({
     Object? id = _Undefined,

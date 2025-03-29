@@ -92,6 +92,9 @@ abstract class Statistics implements _i1.SerializableModel {
 
   Map<int, double> monthChartData;
 
+  /// Returns a shallow copy of this [Statistics]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   Statistics copyWith({
     double? monthlySuccessRate,
     double? monthlySuccessRateTrend,
@@ -161,6 +164,9 @@ class _StatisticsImpl extends Statistics {
           monthChartData: monthChartData,
         );
 
+  /// Returns a shallow copy of this [Statistics]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   Statistics copyWith({
     double? monthlySuccessRate,

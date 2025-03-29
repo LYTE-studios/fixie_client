@@ -70,6 +70,9 @@ abstract class AppTheme implements _i1.SerializableModel {
 
   String? backgroundColor;
 
+  /// Returns a shallow copy of this [AppTheme]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   AppTheme copyWith({
     int? id,
     DateTime? validFrom,
@@ -125,6 +128,9 @@ class _AppThemeImpl extends AppTheme {
           backgroundColor: backgroundColor,
         );
 
+  /// Returns a shallow copy of this [AppTheme]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   AppTheme copyWith({
     Object? id = _Undefined,

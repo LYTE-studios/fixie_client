@@ -86,6 +86,9 @@ abstract class CreateGoalDto implements _i1.SerializableModel {
 
   List<DateTime>? reminders;
 
+  /// Returns a shallow copy of this [CreateGoalDto]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   CreateGoalDto copyWith({
     String? title,
     String? picture,
@@ -148,6 +151,9 @@ class _CreateGoalDtoImpl extends CreateGoalDto {
           reminders: reminders,
         );
 
+  /// Returns a shallow copy of this [CreateGoalDto]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   CreateGoalDto copyWith({
     String? title,

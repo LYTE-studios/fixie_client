@@ -143,6 +143,9 @@ abstract class Goal implements _i1.SerializableModel {
 
   DateTime? created;
 
+  /// Returns a shallow copy of this [Goal]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   Goal copyWith({
     int? id,
     String? title,
@@ -242,6 +245,9 @@ class _GoalImpl extends Goal {
           created: created,
         );
 
+  /// Returns a shallow copy of this [Goal]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   Goal copyWith({
     Object? id = _Undefined,

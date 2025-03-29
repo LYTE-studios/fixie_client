@@ -52,6 +52,9 @@ abstract class UserStatistics implements _i1.SerializableModel {
 
   Map<DateTime, double?> loggedDays;
 
+  /// Returns a shallow copy of this [UserStatistics]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   UserStatistics copyWith({
     _i2.User? user,
     double? total,
@@ -89,6 +92,9 @@ class _UserStatisticsImpl extends UserStatistics {
           loggedDays: loggedDays,
         );
 
+  /// Returns a shallow copy of this [UserStatistics]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   UserStatistics copyWith({
     _i2.User? user,

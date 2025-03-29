@@ -71,6 +71,9 @@ abstract class PurchaseItem implements _i1.SerializableModel {
 
   _i3.User? user;
 
+  /// Returns a shallow copy of this [PurchaseItem]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   PurchaseItem copyWith({
     int? id,
     _i2.Benefit? benefitIdentifier,
@@ -120,6 +123,9 @@ class _PurchaseItemImpl extends PurchaseItem {
           user: user,
         );
 
+  /// Returns a shallow copy of this [PurchaseItem]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   PurchaseItem copyWith({
     Object? id = _Undefined,

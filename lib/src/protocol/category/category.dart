@@ -56,6 +56,9 @@ abstract class Category implements _i1.SerializableModel {
 
   int? presetId;
 
+  /// Returns a shallow copy of this [Category]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   Category copyWith({
     int? id,
     String? title,
@@ -101,6 +104,9 @@ class _CategoryImpl extends Category {
           presetId: presetId,
         );
 
+  /// Returns a shallow copy of this [Category]
+  /// with some or all fields replaced by the given arguments.
+  @_i1.useResult
   @override
   Category copyWith({
     Object? id = _Undefined,
