@@ -287,6 +287,18 @@ class EndpointProfile extends _i1.EndpointRef {
   @override
   String get name => 'profile';
 
+  _i2.Future<bool> shouldSendReview() => caller.callServerEndpoint<bool>(
+        'profile',
+        'shouldSendReview',
+        {},
+      );
+
+  _i2.Future<void> setHasReviewed() => caller.callServerEndpoint<void>(
+        'profile',
+        'setHasReviewed',
+        {},
+      );
+
   _i2.Future<void> deleteEmailRequest(String email) =>
       caller.callServerEndpoint<void>(
         'profile',

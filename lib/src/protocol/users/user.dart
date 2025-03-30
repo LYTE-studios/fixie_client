@@ -32,6 +32,7 @@ abstract class User implements _i1.SerializableModel {
     this.automaticRemindersSetting,
     this.archetype,
     this.limitedOfferEndTime,
+    this.hasReviewed,
   });
 
   factory User({
@@ -50,6 +51,7 @@ abstract class User implements _i1.SerializableModel {
     bool? automaticRemindersSetting,
     _i5.Archetype? archetype,
     DateTime? limitedOfferEndTime,
+    bool? hasReviewed,
   }) = _UserImpl;
 
   factory User.fromJson(Map<String, dynamic> jsonSerialization) {
@@ -86,6 +88,7 @@ abstract class User implements _i1.SerializableModel {
           ? null
           : _i1.DateTimeJsonExtension.fromJson(
               jsonSerialization['limitedOfferEndTime']),
+      hasReviewed: jsonSerialization['hasReviewed'] as bool?,
     );
   }
 
@@ -122,6 +125,8 @@ abstract class User implements _i1.SerializableModel {
 
   DateTime? limitedOfferEndTime;
 
+  bool? hasReviewed;
+
   /// Returns a shallow copy of this [User]
   /// with some or all fields replaced by the given arguments.
   @_i1.useResult
@@ -141,6 +146,7 @@ abstract class User implements _i1.SerializableModel {
     bool? automaticRemindersSetting,
     _i5.Archetype? archetype,
     DateTime? limitedOfferEndTime,
+    bool? hasReviewed,
   });
   @override
   Map<String, dynamic> toJson() {
@@ -166,6 +172,7 @@ abstract class User implements _i1.SerializableModel {
       if (archetype != null) 'archetype': archetype?.toJson(),
       if (limitedOfferEndTime != null)
         'limitedOfferEndTime': limitedOfferEndTime?.toJson(),
+      if (hasReviewed != null) 'hasReviewed': hasReviewed,
     };
   }
 
@@ -194,6 +201,7 @@ class _UserImpl extends User {
     bool? automaticRemindersSetting,
     _i5.Archetype? archetype,
     DateTime? limitedOfferEndTime,
+    bool? hasReviewed,
   }) : super._(
           id: id,
           userInfoId: userInfoId,
@@ -210,6 +218,7 @@ class _UserImpl extends User {
           automaticRemindersSetting: automaticRemindersSetting,
           archetype: archetype,
           limitedOfferEndTime: limitedOfferEndTime,
+          hasReviewed: hasReviewed,
         );
 
   /// Returns a shallow copy of this [User]
@@ -232,6 +241,7 @@ class _UserImpl extends User {
     Object? automaticRemindersSetting = _Undefined,
     Object? archetype = _Undefined,
     Object? limitedOfferEndTime = _Undefined,
+    Object? hasReviewed = _Undefined,
   }) {
     return User(
       id: id is int? ? id : this.id,
@@ -264,6 +274,7 @@ class _UserImpl extends User {
       limitedOfferEndTime: limitedOfferEndTime is DateTime?
           ? limitedOfferEndTime
           : this.limitedOfferEndTime,
+      hasReviewed: hasReviewed is bool? ? hasReviewed : this.hasReviewed,
     );
   }
 }
