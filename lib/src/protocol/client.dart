@@ -210,6 +210,7 @@ class EndpointJournal extends _i1.EndpointRef {
     int? categoryId,
     int? pageSize,
     int? offset,
+    required bool onlyImages,
   }) =>
       caller.callServerEndpoint<List<_i7.JournalLog>?>(
         'journal',
@@ -219,6 +220,7 @@ class EndpointJournal extends _i1.EndpointRef {
           'categoryId': categoryId,
           'pageSize': pageSize,
           'offset': offset,
+          'onlyImages': onlyImages,
         },
       );
 
